@@ -3,4 +3,4 @@
 .Python
 .idea
 venv
-__init__
+.pyc
