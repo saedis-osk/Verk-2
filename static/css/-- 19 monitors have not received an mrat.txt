@@ -1,0 +1,33 @@
+-- 19 monitors have not received an mrating. how many humans have not received an mrating?
+
+select count(*)
+from monitors M
+where M.rating is null;
+
+select count(*)
+from humans H
+    left join monitors M on H.hid = M.hid
+where M.mrating is null;
+
+-- The highest sale total of any human is 110373. What is the name of the human(s) that sold in total for this amount?
+select max(price)
+from (
+    select sum(S.sprice) as price
+    from sells S
+    group by hid
+) tmp;
+
+select H.hname
+from humans H
+    join sells S on S.hid = H.hid
+group by S.hid, H.hname
+having sum(S.sprice) = (
+    select max(price)
+    from (
+    select sum(S.sprice) as price
+    from sells S
+    group by hid
+) tmp;
+)
+
+
