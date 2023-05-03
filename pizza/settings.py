@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'candy.apps.CandyConfig',
     'manufacturer.apps.ManufacturerConfig',
     'user.apps.UserConfig'
+    'menu.apps.MenuConfig',
+    'cart.apps.CartConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
