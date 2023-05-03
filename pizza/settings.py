@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'pizza.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'candy-pizza-db',
+        'USER': 'candy-pizza-user',
+        'PASSWORD': 'Abc.12345',
+        'HOST': '34.88.199.104',
+        'PORT': '5432',
+
+
     }
 }
 
