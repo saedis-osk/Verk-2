@@ -39,9 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'candy.apps.CandyConfig',
-    'manufacturer.apps.ManufacturerConfig',
-    'user.apps.UserConfig'
     'menu.apps.MenuConfig',
     'cart.apps.CartConfig',
     'home.apps.HomeConfig',
