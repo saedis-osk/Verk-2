@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
     <style>
         @media (min-width: 1025px) {
             .h-custom {
@@ -8,7 +10,8 @@
         }
     </style>
 
-    <section class="h-100 h-custom" style="background-color: #eee;">
+    <section class="h-100 h-custom" style="background-color: #FE8585;">
+    <h1>Payment</h1>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
@@ -18,8 +21,8 @@
             <div class="row">
 
               <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <h5 class="cont"><a href="{% url 'menu-index' %}" class="text-body"><i
+                     class="fas fa-long-arrow-alt-left me-2" ></i>Continue shopping</a></h5>
                 <hr>
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -27,10 +30,7 @@
                     <p class="mb-1">Shopping cart</p>
                     <p class="mb-0">You have 4 items in your cart</p>
                   </div>
-                  <div>
-                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                        class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                  </div>
+
                 </div>
 
                 <div class="card mb-3">
@@ -145,7 +145,7 @@
               <div class="col-lg-5">
 
                 <div class="card bg-primary text-white rounded-3">
-                  <div class="card-body">
+                  <div class="card-body pay">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <h5 class="mb-0">Card details</h5>
                       <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
