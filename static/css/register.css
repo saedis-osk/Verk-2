@@ -3,18 +3,18 @@ h1 {
     text-align:center;
 }
 .form-horizontal{
-    background-color: #e58591;
+    background-color: #FE8585;
     list-style-type: none;
     text-align: center;
     font-weight: bold;
     font-size:1em;
     color: #7a1300;
     text-decoration: antiquewhite;
-    margin: auto;
     align-items: center;
     display: inline-grid;
     place-items: center;
     width: 100%;
+    margin-top:6em;
     margin-bottom: 8em;
 }
 ul{
@@ -25,9 +25,9 @@ span{
     display:none;
 }
 
-.btn-primary {
+.signup {
     border-radius: 0.5em;
-    margin-top: 2em;
+    margin: 2em 0 0;
     background-color: #FE8585;
     border-color:brown;
 }
