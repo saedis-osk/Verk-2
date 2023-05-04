@@ -15,9 +15,15 @@ class Pizza(models.Model):
     toppings = models.CharField(max_length=255, blank=True)
     price = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
 class PizzaImage(models.Model):
     image = models.CharField(max_length=9999)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.image
 
 
 class Drink(models.Model):
@@ -26,9 +32,17 @@ class Drink(models.Model):
     size = models.CharField(max_length=255, blank=True)
     price = models.FloatField()
 
+    def __str__(self):
+        return self.name
+
+
+
 class DrinkImage(models.Model):
     image = models.CharField(max_length=9999)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.image
 
 
 
