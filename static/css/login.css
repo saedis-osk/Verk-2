@@ -16,14 +16,10 @@ h1 {
 .reg a{
     color: blue;
 }
-p {
-    margin: 0em;
-    margin-top: 1em;
-}
 
-.btn-primary {
+
+.login {
     border-radius: 0.5em;
-    margin-top: 2em;
     background-color: #FE8585;
     border-color:brown;
 }
