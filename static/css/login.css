@@ -1,0 +1,33 @@
+h1 {
+    font-family: "Arial";
+    text-align:center;
+}
+.form-horizontal{
+    background-color: #e58591;
+    text-align: center;
+    color: #7a1300;
+    align-items: center;
+    display: inline-grid;
+    place-items: center;
+    width: 100%;
+    margin-bottom: 16em;
+    font-weight: bold;
+}
+.reg a{
+    color: blue;
+}
+
+
+.login {
+    border-radius: 0.5em;
+    background-color: #FE8585;
+    border-color:brown;
+}
+.btn-primary:hover{
+    background-color: brown;
+    border-color: #FE8585;
+}
+
+.btn-primary:active{
+    background-color: #7a1300;
+}

@@ -1,0 +1,36 @@
+h1 {
+    font-family: "Arial";
+    text-align:center;
+}
+.form-horizontal{
+    background-color: #e58591;
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+    font-size:1em;
+    color: #7a1300;
+    text-decoration: antiquewhite;
+    margin: auto;
+    align-items: center;
+    display: inline-grid;
+    place-items: center;
+    width: 100%;
+    margin-bottom: 8em;
+}
+ul{
+    list-style-type: none;
+    display: none;
+}
+span{
+    display:none;
+}
+
+.btn-primary {
+    border-radius: 0.5em;
+    margin-top: 2em;
+    background-color: #FE8585;
+    border-color:brown;
+}
+.btn-primary:hover{
+    background-color: brown;
+}
