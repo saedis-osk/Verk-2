@@ -28,4 +28,6 @@ urlpatterns = [
     path('carts/', include('cart.urls')),
 
     path('homes/', include('home.urls')),
+
+    path('views/', include('toppings.urls'))
 ]
