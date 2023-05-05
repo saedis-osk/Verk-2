@@ -1,11 +1,4 @@
-function handleSearch(event) {
-  event.preventDefault(); // prevent the form from submitting and reloading the page
-
-  const searchInput = document.querySelector('.search-input');
-  const searchQuery = searchInput.value.trim();
-
-  // Do something with the search query (e.g. fetch search results from a server)
-  function filterProducts(searchQuery) {
+function filterProducts(searchQuery) {
   const productCards = document.querySelectorAll('.col.mb-5');
 
   productCards.forEach((productCard) => {
@@ -26,10 +19,17 @@ function handleSearch(event) {
   const searchQuery = searchInput.value.trim();
 
   filterProducts(searchQuery);
-}
-
 
   console.log(`Search query: ${searchQuery}`);
 }
 
-// No need to add an event listener to the search button, as the form's onsubmit attribute takes care of it.
+// Add an event listener to the search form
+document.addEventListener('DOMContentLoaded', () => {
+  const searchForm = document.querySelector('#search-form');
+
+  if (searchForm) {
+    searchForm.addEventListener('submit', handleSearch);
+  } else {
+    console.error('Search form not found');
+  }
+});
