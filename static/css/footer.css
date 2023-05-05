@@ -1,6 +1,7 @@
 footer{
     background: #6D1A1A;
-    height: 10em;
+    height: 100%;
+    margin-bottom:0 !important;
 }
 
 h4{
