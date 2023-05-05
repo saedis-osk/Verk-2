@@ -1,7 +1,7 @@
 h1 {
     margin-top: 2em;
     text-align:center;
-    color:white;
+    color:#6D1A1A;
 }
 
 section .h-custom {
@@ -14,12 +14,18 @@ div .card .mb-3 {
     background-color:#6D1A1A;
     color:white;
 }
-div .cont{
-
+.btn.btn-info.btn-block.btn-lg{
+    background-color: #FE8585;
+    border-color:#6D1A1A;
+}
+.btn.btn-info.btn-block.btn-lg:hover{
+    background-color: hotpink;
+    border-color:#FE8585;
 }
 
 div .card{
-    background-color: #E58591;
+    background-color: mintcream;
+    margin-bottom: 2em;
 }
 
 div .pay{
