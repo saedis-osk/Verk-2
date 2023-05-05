@@ -14,6 +14,9 @@ class Pizza(models.Model):
     size = models.CharField(max_length=255, blank=True)
     toppings = models.CharField(max_length=255, blank=True)
     price = models.FloatField()
+    image = models.ImageField(upload_to='pizza/')
+
+
 
     def __str__(self):
         return self.name
@@ -31,6 +34,7 @@ class Drink(models.Model):
     description = models.CharField(max_length=255, blank=True)
     size = models.CharField(max_length=255, blank=True)
     price = models.FloatField()
+    image = models.ImageField(upload_to='drink/')
 
     def __str__(self):
         return self.name

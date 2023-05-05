@@ -8,6 +8,10 @@ class Customer(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=15, blank=True)
     address = models.CharField(max_length=255, blank=True)
+    image = models.ImageField(upload_to='users/', default='users/default.png')
+
+    def __str__(self):
+        return self.user.username
 
 
 
