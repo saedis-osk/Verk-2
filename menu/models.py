@@ -19,7 +19,7 @@ class Pizza(models.Model):
         return self.name
 
 class PizzaImage(models.Model):
-    image = models.CharField(max_length=9999)
+    image = models.ImageField(max_length=9999)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Drink(models.Model):
 
 
 class DrinkImage(models.Model):
-    image = models.CharField(max_length=9999)
+    image = models.ImageField(max_length=9999)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -51,6 +51,9 @@ class Offer(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     description = models.CharField(max_length=255, blank=True)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.image
 
 
 # Offer
