@@ -1,6 +1,23 @@
 from django.db import models
+from menu.models import Pizza
+# from user.models import User
 
 # Create your models here.
+
+
+class Cart(models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    size = models.CharField(max_length=10)
+    toppings = models.CharField(max_length=255, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+        # def __str__(self):
+        #     return self.name
+
+
 
 # class CandyCategory(models.Model):
 #     name = models.CharField(max_length=255)
