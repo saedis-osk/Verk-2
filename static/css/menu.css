@@ -1,0 +1,23 @@
+.search-input {
+    display: inline-block;
+    width: 200px; /* adjust to your desired width */
+    margin-right: 10px; /* adjust to your desired margin */
+  }
+
+  .search-button{
+    display: inline-block;
+    margin-right: 10px; /* adjust to your desired margin */
+  }
+
+   .make-pizza-button {
+       display: inline-block;
+       
+       background-color: #6d1a1a;
+       border-color:#FE8585;
+   }
+
+   .make-pizza-button:hover{
+       background-color: #FE8585;
+       border-color:#6d1a1a;
+   }
+
