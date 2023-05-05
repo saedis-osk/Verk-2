@@ -45,4 +45,21 @@ class DrinkImage(models.Model):
         return self.image
 
 
+class Offer(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    description = models.CharField(max_length=255, blank=True)
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+
+
+# Offer
+# -id
+# -name
+# -prices
+# -pizzas
+# -descriptions
+# -images
+# -drinks
+
 
