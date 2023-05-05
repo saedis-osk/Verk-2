@@ -8,17 +8,21 @@
             <div class="container px-4 px-lg-5 mt-5">
 
 
+<!-- search button and make my own pizza button-->
 
 <form style="margin: 20px;">
+
   <input type="text" placeholder="Search.." class="search-input">
   <a href="/" class="search-button">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="#6D1A1A" class="bi bi-search" viewBox="0 0 16 16">
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
     </svg>
+
   </a>
   <a class="btn btn-primary make-pizza-button" href="{% url 'topping-index' %}">Make My Own Pizza</a>
 </form>
-              <!-- Make my own pizza button here-->
+
+
 
 
 
@@ -31,7 +35,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Brownie King</h5>
+                                    <h5 class="pizza fw-bolder">Brownie King</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -50,7 +54,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">The classic</h5>
+                                    <h5 class="pizza fw-bolder">The classic</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -70,7 +74,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Toffee Deluxe</h5>
+                                    <h5 class="pizza fw-bolder">Toffee Deluxe</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -89,7 +93,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Banana Dream</h5>
+                                    <h5 class="pizza fw-bolder">Banana Dream</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -109,7 +113,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fruity Surprise</h5>
+                                    <h5 class="pizza fw-bolder">Fruity Surprise</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -130,7 +134,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Strawberry Sundae</h5>
+                                    <h5 class="pizza fw-bolder">Strawberry Sundae</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -151,7 +155,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">M&M Madness</h5>
+                                    <h5 class="pizza fw-bolder">M&M Madness</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -172,7 +176,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Berry Bomb</h5>
+                                    <h5 class="pizza fw-bolder">Berry Bomb</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -193,7 +197,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">PB&J Heaven</h5>
+                                    <h5 class="pizza fw-bolder">PB&J Heaven</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -214,7 +218,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">S'more Surprise</h5>
+                                    <h5 class="pizza fw-bolder">S'more Surprise</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -235,7 +239,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Gummy Craze</h5>
+                                    <h5 class="pizza fw-bolder">Gummy Craze</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -256,7 +260,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Quadruple Trouble</h5>
+                                    <h5 class="pizza fw-bolder">Quadruple Trouble</h5>
                                     <!-- Product price-->
                                     2.000kr
                                 </div>
@@ -323,6 +327,9 @@
                 </div>
             </div>
         </section>
+
+<script href="{% static 'js/menu.js' %}" ></script>
+
 
     {% include 'footer.html' %}
 {%endblock %}
