@@ -7,9 +7,17 @@
     border-radius: 2em;
 
 }
+
 .btn.btn-secondary:active{
     background-color: deeppink;
 }
+
+.btn.btn-secondary{
+    background-color: #6D1A1A;
+}
+
+
+
 .navbar{
     margin-bottom: 5em;
 }
@@ -18,4 +26,37 @@
 .selected-pizza{
     text-align:center;
     color:#6D1A1A;
+}
+
+#inlineCheckbox1{
+
+}
+
+label{
+    color: #6D1A1A;
+    font-weight: bold;
+}
+
+h4{
+    padding: 20px;
+}
+img{
+    width: 10%;
+    padding-bottom: 50px;
+}
+
+
+
+label {
+cursor: pointer;
+}
+
+#myImage {
+width: 100px;
+border: 1px solid #FE8585;
+padding: 2px;
+}
+
+#myImage.checked {
+background-color: #FE8585;
 }
