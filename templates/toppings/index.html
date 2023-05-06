@@ -7,16 +7,30 @@
         <h3 class="selected-pizza">Name of selected pizza JS</h3>
         <form>
             <h4>Base</h4>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
-          </label>
-          <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-          </label>
-          <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-          </label>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Toppings</h5>
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="checkbox" name="topping" value="banana_dream">
+              <img src="static/images/toppings/bananas_topping.jpg" alt="banana"/>
+            </label>
+            <label class="btn btn-secondary">
+              <input type="checkbox" name="topping" value="mushrooms">
+              <img src="mushrooms.png" alt="Mushrooms">
+            </label>
+            <label class="btn btn-secondary">
+              <input type="checkbox" name="topping" value="olives">
+              <img src="olives.png" alt="Olives">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
