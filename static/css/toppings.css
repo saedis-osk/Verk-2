@@ -51,12 +51,12 @@ label {
 cursor: pointer;
 }
 
-#myImage {
+img {
 width: 100px;
 border: 1px solid #FE8585;
 padding: 2px;
 }
 
-#myImage.checked {
+.checked {
 background-color: #FE8585;
 }
