@@ -14,7 +14,6 @@ h1 {
     display: inline-grid;
     place-items: center;
     width: 100%;
-    margin-top:6em;
     margin-bottom: 8em;
 }
 ul{
@@ -28,9 +27,15 @@ span{
 .signup {
     border-radius: 0.5em;
     margin: 2em 0 0;
-    background-color: #FE8585;
+    background-color: #6D1A1A;
     border-color:brown;
 }
-.btn-primary:hover{
-    background-color: brown;
+.signup:hover{
+    background-color: #FE8585;
+    border-color: #6D1A1A;
+}
+
+.signup:active{
+    background-color: #7a1300;
+    border-color: #6D1A1A;
 }
