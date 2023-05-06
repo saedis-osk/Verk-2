@@ -21,35 +21,25 @@
 .navbar{
     margin-bottom: 5em;
 }
-.card-body.p-4{
-}
+
 .selected-pizza{
     text-align:center;
     color:#6D1A1A;
 }
 
-#inlineCheckbox1{
-
-}
-
 label{
     color: #6D1A1A;
     font-weight: bold;
+    cursor: pointer;
 }
 
 h4{
     padding: 20px;
-}
-img{
-    width: 10%;
-    padding-bottom: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #6D1A1A;
 }
 
-
-
-label {
-cursor: pointer;
-}
 
 #myImage {
 width: 100px;
