@@ -12,7 +12,7 @@
 }
 
 .btn.btn-secondary{
-    background-color: #6D1A1A;
+    background-color: #FE8585;
 }
 
 
@@ -29,6 +29,7 @@
 
 h4{
     padding: 20px;
+    color:#6D1A1A;
 }
 
 .toppings-container {
