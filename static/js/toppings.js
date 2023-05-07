@@ -1,22 +1,19 @@
-const image = document.getElementById('myImage');
-const checkbox = document.getElementById('myCheckbox');
+const checkboxes = document.querySelectorAll('.myCheckbox');
+const images = document.querySelectorAll('.checked');
 
-image.classList.remove('checked')
-image.addEventListener('DOMContentLoaded', function() {
-  checkbox.checked = !checkbox.checked;
-  if (checkbox.checked) {
-    image.classList.add('checked');
-  } else {
-    image.classList.remove('checked');
-  }
+images.forEach(function(image) {
+  image.classList.remove('checked');
 });
 
-checkbox.addEventListener('click', function() {
-  if (checkbox.checked) {
-    image.classList.add('checked');
-  } else {
-    image.classList.remove('checked');
-  }
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('click', function() {
+    const image = this.previousElementSibling;
+
+    if (this.checked) {
+      image.classList.add('checked');
+    } else {
+      image.classList.remove('checked');
+    }
+  });
 });
 
-checkbox.checked = false;

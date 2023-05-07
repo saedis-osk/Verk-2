@@ -2,7 +2,6 @@
     width: 80%;
     height: 80em;
     margin-left:10%;
-    display: inline-block;
     justify-content: center;
     border-radius: 2em;
 
@@ -21,32 +20,64 @@
 .navbar{
     margin-bottom: 5em;
 }
-
+.card-body.p-4{
+}
 .selected-pizza{
     text-align:center;
     color:#6D1A1A;
 }
 
-label{
-    color: #6D1A1A;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 h4{
     padding: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #6D1A1A;
 }
 
-
-#myImage {
-width: 100px;
-border: 1px solid #FE8585;
-padding: 2px;
+.toppings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#myImage.checked {
-background-color: #FE8585;
+.topping {
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+}
+
+label {
+  cursor: pointer;
+}
+
+.myCheckbox {
+  color: #6D1A1A;
+  font-weight: bold;
+}
+
+label .checked {
+  background-color: #FE8585;
+  opacity: 40%;
+}
+
+.myCheckbox div {
+  margin-right: 0.5em;
+}
+
+.myCheckbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1em;
+}
+
+img:not(.brand) {
+  width: 6em;
+  border: 1px solid #FE8585;
+  padding: 2px;
+  height: 6em;
+}
+
+label span {
+  color: #6D1A1A;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5em;
 }
