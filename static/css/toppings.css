@@ -1,6 +1,6 @@
 .card{
     width: 80%;
-    height: 80em;
+    height: 95%;
     margin-left:10%;
     justify-content: center;
     border-radius: 2em;
@@ -33,8 +33,11 @@ h4{
 
 .toppings-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+}
+.toppings-container div{
+    width: 150px;
+    height: 150px;
 }
 
 .topping {
