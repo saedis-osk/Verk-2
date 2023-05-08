@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'menu.apps.MenuConfig',
     'cart.apps.CartConfig',
     'home.apps.HomeConfig',
-    'toppings.apps.ToppingsConfig',
     'user.apps.UserConfig'
 ]
 

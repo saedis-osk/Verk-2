@@ -7,7 +7,10 @@
         <h3 class="selected-pizza">Name of selected pizza JS</h3>
             <h5 class="selected-pizza">Description of the pizza</h5>
 
-        <form>
+        <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post">
+            {% csrf_token %}
+            {{form }}
+            <input  type="submit" value="Create" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0 "/>
             <h4>Base</h4>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 

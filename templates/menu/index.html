@@ -9,9 +9,11 @@
 
 
 <!-- search button and make my own pizza button-->
+
 <form id="search-form">
-                <input type="text" placeholder="Search.." class="search-input">
-                <button type="submit" class="search-button" id="search-button">
+
+                <input type="text" placeholder="Search.." class="search-input" id="search-box">
+                <button type="submit" class="search-button" id="search-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
@@ -19,7 +21,7 @@
                 </button>
 
                 <div class="d-grid mb-2">
-                <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'topping-index' %}">Make My Own Pizza</a>
+                <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'create_pizza'%}">Make My Own Pizza</a>
                 </div>
 </form>
 
@@ -40,7 +42,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -59,7 +61,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +81,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +100,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +120,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +141,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -160,7 +162,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -181,7 +183,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -202,7 +204,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -223,7 +225,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -244,7 +246,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -265,7 +267,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -296,7 +298,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>
@@ -315,7 +317,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
                             </div>
                         </div>
                     </div>

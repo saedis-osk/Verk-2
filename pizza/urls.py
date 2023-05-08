@@ -29,5 +29,5 @@ urlpatterns = [
 
     path('homes/', include('home.urls')),
 
-    path('views/', include('toppings.urls'))
+    path('menus/create_pizza', include('menu.urls'))
 ]

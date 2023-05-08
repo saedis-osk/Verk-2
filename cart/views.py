@@ -14,7 +14,9 @@ def get_cart_by_id(request, id):
 
 def create_cart(request):
     if request.method == 'POST':
-        print(1)
+        form = CartCreateForm(data=request.POST)
+        if form.is_valid():
+            cart = form.save()
     else:
         form = CartCreateForm()
     return render(request, 'cart/create_cart.html', {
