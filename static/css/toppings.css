@@ -1,0 +1,87 @@
+.card{
+    width: 80%;
+    height: 95%;
+    margin-left:10%;
+    justify-content: center;
+    border-radius: 2em;
+
+}
+
+.btn.btn-secondary:active{
+    background-color: deeppink;
+}
+
+.btn.btn-secondary{
+    background-color: #FE8585;
+}
+
+
+
+.navbar{
+    margin-bottom: 5em;
+}
+.card-body.p-4{
+}
+.selected-pizza{
+    text-align:center;
+    color:#6D1A1A;
+}
+
+h4{
+    padding: 20px;
+    color:#6D1A1A;
+}
+
+.toppings-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.toppings-container div{
+    width: 150px;
+    height: 150px;
+}
+
+.topping {
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px;
+}
+
+label {
+  cursor: pointer;
+}
+
+.myCheckbox {
+  color: #6D1A1A;
+  font-weight: bold;
+}
+
+label .checked {
+  background-color: #FE8585;
+  opacity: 40%;
+}
+
+.myCheckbox div {
+  margin-right: 0.5em;
+}
+
+.myCheckbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1em;
+}
+
+img:not(.brand) {
+  width: 6em;
+  border: 1px solid #FE8585;
+  padding: 2px;
+  height: 6em;
+}
+
+label span {
+  color: #6D1A1A;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0.5em;
+}

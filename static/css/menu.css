@@ -1,0 +1,25 @@
+
+   .make-pizza-button {
+       background-color: #6d1a1a;
+       border-color:#FE8585;
+   }
+
+   .make-pizza-button:hover{
+       background-color: #FE8585;
+       border-color:#6d1a1a;
+   }
+
+   #search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  margin-right: 10px;
+}
+
+
+.make-pizza-button {
+  margin-top: 10px;
+    width: 200px;
+}

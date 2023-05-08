@@ -1,6 +1,7 @@
 .navbar{
     background: #6D1A1A;
     height: 6em;
+    margin-bottom: 4em;
 }
 
 .brand{
@@ -11,8 +12,11 @@
     width: 12%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-
 }
+.bi.bi-cart4{
+    color: #FE8585;
+}
+
 .btn-primary {
     border-radius: 0.5em;
     margin-right: 2em;

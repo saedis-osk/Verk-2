@@ -1,8 +1,29 @@
+
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}"/>
+
     <section class="py-5 bg-transparent">
             <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Candy pizzas</h2>
+
+
+<!-- search button and make my own pizza button-->
+<form id="search-form">
+                <input type="text" placeholder="Search.." class="search-input">
+                <button type="submit" class="search-button" id="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+
+                </button>
+
+                <div class="d-grid mb-2">
+                <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'topping-index' %}">Make My Own Pizza</a>
+                </div>
+</form>
+
+
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
                         <div class="card h-100">
@@ -305,4 +326,9 @@
             </div>
         </section>
 
+<script src="{% static 'js/menu.js' %}"></script>
+
+
+
+    {% include 'footer.html' %}
 {%endblock %}
