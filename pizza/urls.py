@@ -31,4 +31,6 @@ urlpatterns = [
 
     path('views/', include('toppings.urls')),
 
+    path('drinks/', include('drinks.urls')),
+
 ]
