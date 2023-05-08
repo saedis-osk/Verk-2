@@ -25,6 +25,6 @@ class Account(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
     profile_image = models.CharField(max_length=9999)
 
