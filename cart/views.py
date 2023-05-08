@@ -2,11 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from cart.models import Cart
 # Create your views here.
 
-
-
-
-
-
 def index(request):
     context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
     return render(request, 'cart/index.html', context)
@@ -21,6 +16,6 @@ def create_cart(request):
         print(1)
     else:
         form = CartCreateForm()
-    return render(request, 'carts/create_cart.html', {
+    return render(request, 'cart/create_cart.html', {
         'from': form
     })

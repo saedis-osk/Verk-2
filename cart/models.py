@@ -8,6 +8,7 @@ from user.models import Account
 class Cart(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    price = models.FloatField(default=0.0)
     quantity = models.IntegerField(default=1)
     size = models.CharField(max_length=10)
     toppings = models.CharField(max_length=255, blank=True)

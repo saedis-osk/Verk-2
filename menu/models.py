@@ -13,7 +13,7 @@ class Pizza(models.Model):
     ingredient = models.CharField(max_length=255, blank=True)
     size = models.CharField(max_length=255, blank=True)
     toppings = models.CharField(max_length=255, blank=True)
-    price = models.FloatField()
+    price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='pizza/default.png')
 
 
