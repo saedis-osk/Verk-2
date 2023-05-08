@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from cart.models import Cart
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -24,3 +25,7 @@ def create_cart(request):
     return render(request, 'carts/create_cart.html', {
         'from': form
     })
+
+def profile_view(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'profile.html', {'user': user})

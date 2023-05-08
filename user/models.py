@@ -4,9 +4,9 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Account(models.Model):
+class User(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, blank=True)
     phone_number = models.CharField(max_length=15, blank=True)
     mail = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
@@ -25,6 +25,6 @@ class Account(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.CharField(max_length=9999)
 
