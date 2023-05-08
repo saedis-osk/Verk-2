@@ -1,16 +1,5 @@
-.search-input {
-    display: inline-block;
-    width: 200px; /* adjust to your desired width */
-    margin-right: 10px; /* adjust to your desired margin */
-  }
-
-  .search-button{
-    display: inline-block;
-  }
-
 
    .make-pizza-button {
-       display: inline-block;
        background-color: #6d1a1a;
        border-color:#FE8585;
    }
@@ -19,3 +8,18 @@
        background-color: #FE8585;
        border-color:#6d1a1a;
    }
+
+   #search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  margin-right: 10px;
+}
+
+
+.make-pizza-button {
+  margin-top: 10px;
+    width: 200px;
+}
