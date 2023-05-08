@@ -29,7 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'menu.apps.MenuConfig',
     'cart.apps.CartConfig',
     'home.apps.HomeConfig',
-    'toppings.apps.ToppingsConfig'
+    'toppings.apps.ToppingsConfig',
+    'user.apps.UserConfig'
 ]
 
 MIDDLEWARE = [

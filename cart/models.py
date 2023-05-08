@@ -1,12 +1,12 @@
 from django.db import models
 from menu.models import Pizza
-# from user.models import User
+from user.models import Account
 
 # Create your models here.
 
 
 class Cart(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     size = models.CharField(max_length=10)
