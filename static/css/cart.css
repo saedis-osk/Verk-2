@@ -30,3 +30,38 @@ div .card{
 div .pay{
     background-color: #6D1A1A;
 }
+
+.btn-secondary{
+    background-color: #FE8585;
+    display: flex;
+    align-items: center;
+
+}
+
+.btn-secondary:hover{
+    background-color: #6d1a1a;
+    border-color:#FE8585;
+}
+
+   @media (min-width: 1025px) {
+            .h-custom {
+            height: 100vh !important;
+            }
+        }
+
+.card-container {
+  display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.card-1 {
+  margin-right: 10px;
+}
+
+.card-2 {
+  margin-left: 10px;
+}
+
+#popupCheckout{
+    width: 200px;
+}
