@@ -38,3 +38,6 @@ align-items: center;
     border-color:#6d1a1a;
 }
 
+.sorting{
+    display: flex;
+}
