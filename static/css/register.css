@@ -16,13 +16,6 @@ h1 {
     width: 100%;
     margin-bottom: 8em;
 }
-ul{
-    list-style-type: none;
-    display: none;
-}
-span{
-    display:none;
-}
 
 .signup {
     border-radius: 0.5em;
