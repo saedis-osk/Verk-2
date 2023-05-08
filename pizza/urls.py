@@ -29,5 +29,6 @@ urlpatterns = [
 
     path('homes/', include('home.urls')),
 
-    path('views/', include('toppings.urls'))
+    path('views/', include('toppings.urls')),
+
 ]
