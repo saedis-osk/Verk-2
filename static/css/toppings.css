@@ -79,6 +79,13 @@ img:not(.brand) {
   height: 6em;
 }
 
+img:not(.profile-image) {
+  width: 6em;
+  border: 1px solid #FE8585;
+  padding: 2px;
+  height: 6em;
+}
+
 label span {
   color: #6D1A1A;
   font-weight: bold;

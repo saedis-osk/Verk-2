@@ -44,3 +44,4 @@ def create_cart(request):
 def profile_view(request, username):
     user = User.objects.get(username=username)
     return render(request, 'profile.html', {'user': user})
+

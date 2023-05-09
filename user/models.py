@@ -1,16 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
+def __str__(self):
+    return f"{self.user.username} Profile - {self.profile_image.url}"
+
 
 
 # Create your models here.
 
-class User(models.Model):
+class Account(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
     phone_number = models.CharField(max_length=15, blank=True)
     mail = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='users/', default='users/default.png')
+    image = models.ImageField(upload_to='users/', default='users/default.png', blank=True)
 
 # class CardInfo(models.Model):
 #     card_number
@@ -26,5 +29,6 @@ class User(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.CharField(max_length=9999)
+    name = models.CharField(max_length=255, blank=True)
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True)
 

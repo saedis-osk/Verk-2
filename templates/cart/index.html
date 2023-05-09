@@ -2,15 +2,9 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
-    <style>
-        @media (min-width: 1025px) {
-            .h-custom {
-            height: 100vh !important;
-            }
-        }
-    </style>
 
-    <section class="h-100 h-custom" style="background-color: #FE8585;">
+
+    <section class="h-100 h-custom">
     <h1>Payment</h1>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -21,145 +15,85 @@
             <div class="row">
 
               <div class="col-lg-7">
+
                 <h5 class="cont"><a href="{% url 'menu-index' %}" class="text-body"><i
-                     class="fas fa-long-arrow-alt-left me-2" ></i>Continue shopping</a></h5>
-                <hr>
+                     class="continue-shopping" ></i>Continue shopping</a></h5>
 
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div>
-                    <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have 4 items in your cart</p>
-                  </div>
 
-                </div>
+              </button>
 
                 <div class="card mb-3">
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
                       <div class="d-flex flex-row align-items-center">
                         <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                          image
+                          <!--image -->
+                            <!--class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">-->
                         </div>
                         <div class="ms-3">
-                          <h5>Iphone 11 pro</h5>
-                          <p class="small mb-0">256GB, Navy Blue</p>
+                          <h5>Name of product</h5>
+                          <p class="small mb-0">Description of product</p>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
                         <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">2</h5>
+                          <h5 class="fw-normal mb-0">nr</h5>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">$900</h5>
+                          <h5 class="mb-0">price</h5>
                         </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img2.webp"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                        </div>
-                        <div class="ms-3">
-                          <h5>Samsung galaxy Note 10 </h5>
-                          <p class="small mb-0">256GB, Navy Blue</p>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">2</h5>
-                        </div>
-                        <div style="width: 80px;">
-                          <h5 class="mb-0">$900</h5>
-                        </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img3.webp"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                        </div>
-                        <div class="ms-3">
-                          <h5>Canon EOS M50</h5>
-                          <p class="small mb-0">Onyx Black</p>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">1</h5>
-                        </div>
-                        <div style="width: 80px;">
-                          <h5 class="mb-0">$1199</h5>
-                        </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+           <button class=" btn btn-secondary mb-2">
+                <h7>Clear cart </h7>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg>
+</button>
 
-                <div class="card mb-3 mb-lg-0">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img4.webp"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                        </div>
-                        <div class="ms-3">
-                          <h5>MacBook Pro</h5>
-                          <p class="small mb-0">1TB, Graphite</p>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">1</h5>
-                        </div>
-                        <div style="width: 80px;">
-                          <h5 class="mb-0">$1799</h5>
-                        </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
               </div>
-              <div class="col-lg-5">
+
+                <div class="card-container">
+ <div class="card-1">
+    <label class="myCheckbox">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+      <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+  <label class="form-check-label" for="inlineRadio2">Pay with card</label>
+</div>
+    </label>
+  </div>
+
+
+ <div class="card-2">
+    <label class="myCheckbox">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+      <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">Pay on arrival</label>
+</div>
+    </label>
+  </div>
+</div>
+
+              <div class="col-lg-5" id="popupCardWindow">
 
                 <div class="card bg-primary text-white rounded-3">
                   <div class="card-body pay">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <h5 class="mb-0">Card details</h5>
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                        class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
                     </div>
-
-                    <p class="small mb-2">Card type</p>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
 
                     <form class="mt-4">
                       <div class="form-outline form-white mb-4">
@@ -169,7 +103,7 @@
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                        <input type="text" id="typeText1" class="form-control form-control-lg" siez="17"
                           placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
                         <label class="form-label" for="typeText">Card Number</label>
                       </div>
@@ -186,7 +120,7 @@
                           <div class="form-outline form-white">
                             <input type="password" id="typeText" class="form-control form-control-lg"
                               placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">Cvv</label>
+                            <label class="form-label" for="typeText">CVC</label>
                           </div>
                         </div>
                       </div>
@@ -195,20 +129,11 @@
 
                     <hr class="my-4">
 
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$4798.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Shipping</p>
-                      <p class="mb-2">$20.00</p>
-                    </div>
-
                     <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">$4818.00</p>
+                      <p class="mb-2">Total</p>
+                      <p class="mb-2">...kr</p>
                     </div>
+
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
@@ -217,11 +142,65 @@
 </svg></i></span>
                       </div>
                     </button>
-
                   </div>
                 </div>
-
               </div>
+
+
+
+
+                <div class="col-lg-5">
+
+                <div class="card bg-primary text-white rounded-3">
+                  <div class="card-body pay">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h5 class="mb-0">Information</h5>
+                    </div>
+
+                    <form class="mt-4">
+                      <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg"
+                          placeholder="candy@pizza.is" />
+                        <label class="form-label" for="typeName">Email </label>
+                      </div>
+
+                      <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17"
+                          placeholder="+354 1234 567" minlength="7" maxlength="20" />
+                        <label class="form-label" for="typeText">phone number</label>
+                      </div>
+
+                        <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17"
+                          placeholder="Reykjavík" minlength="5" maxlength="30" />
+                        <label class="form-label" for="typeText">City</label>
+                      </div>
+
+                        <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17"
+                          placeholder="101" minlength="3" maxlength="3" />
+                        <label class="form-label" for="typeText">zip code</label>
+                      </div>
+
+                         <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17"
+                          placeholder="Gervigata 4" minlength="5" maxlength="50" />
+                        <label class="form-label" for="typeText">Street name and number</label>
+                      </div>
+
+                    </form>
+
+         <button class=" btn btn-secondary mb-2" id="popupCheckout">
+                <h7> confirmation </h7>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>
+</button>
+
+
+
+
+
 
             </div>
 
@@ -231,4 +210,7 @@
     </div>
   </div>
 </section>
+
+<script src="{% static 'js/cart.js' %}"></script>
+
 {%endblock %}

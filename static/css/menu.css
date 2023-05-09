@@ -10,8 +10,10 @@
    }
 
    #search-form {
-  display: flex;
-  align-items: center;
+       display: flex;
+justify-content: space-between;
+align-items: center;
+       margin-bottom: 30px;
 }
 
 .search-input {
@@ -22,4 +24,20 @@
 .make-pizza-button {
   margin-top: 10px;
     width: 200px;
+}
+
+.btn-secondary{
+    background-color: #6d1a1a;
+    display: flex;
+    align-items: center;
+
+}
+
+.btn-secondary:hover{
+    background-color: #FE8585;
+    border-color:#6d1a1a;
+}
+
+.sorting{
+    display: flex;
 }

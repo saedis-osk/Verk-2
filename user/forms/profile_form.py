@@ -1,11 +1,13 @@
-from django.forms import ModelForm, widgets
+from django.forms import ModelForm, widgets, FileInput
 from user.models import Profile
 
 
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = [ 'id', 'user' ]
+        exclude = ['id']
         widgets = {
-            'profile_image': widgets.TextInput(attrs={ 'class': 'form-control'})
+            'profile_image': widgets.FileInput(attrs={}),
+            'name': widgets.TextInput(attrs={'class': 'text_box'}),
+            'user': widgets.HiddenInput()
         }

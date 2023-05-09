@@ -1,8 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}"/>
     <h1>Profile</h1>
-    <form class="form form-horizontal" method="post">
+    <form class="form form-horizontal" method="post" enctype="multipart/form-data" action="{% url 'profile' %}">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+
         {% csrf_token %}
+
+        {{ form }}
+
+
+            </div>
+
+        </div>
+    <img src="{{user.profile.profile_image.url}}" class="profile_image" id="id_profile_image"/>
         <input type="submit" class="btn btn-primary" value="update"/>
                </form>
+
 {% endblock %}
