@@ -22,7 +22,7 @@ class Pizza(models.Model):
     size = models.CharField(max_length=255, blank=True)
     toppings = models.ForeignKey(Toppings, on_delete=models.CASCADE, default=Toppings)
     price = models.FloatField(default=0.0)
-    image = models.ImageField(upload_to='pizza/', default='pizza/default.png')
+    image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
 
 
     def __str__(self):
@@ -46,7 +46,6 @@ class Offer(models.Model):
     description = models.CharField(max_length=255, blank=True)
     drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.image
+
 
 
