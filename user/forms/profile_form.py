@@ -1,4 +1,4 @@
-from django.forms import ModelForm, widgets, ClearableFileInput
+from django.forms import ModelForm, widgets, FileInput
 from user.models import Profile
 
 
@@ -7,7 +7,7 @@ class ProfileForm(ModelForm):
         model = Profile
         exclude = ['id']
         widgets = {
-            'name': widgets.TextInput(attrs={'class': 'form-control'}),
-            'profile_image': widgets.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'profile_image': widgets.FileInput(attrs={'class': 'image_selection_box'}),
+            'name': widgets.TextInput(attrs={'class': 'text_box'}),
             'user': widgets.HiddenInput()
         }

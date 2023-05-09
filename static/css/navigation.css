@@ -10,6 +10,7 @@
 .profile_button{
     text-decoration: none;
 }
+
 .brand{
     margin-top:2em;
     position: absolute;
@@ -40,9 +41,11 @@ body{
     border-color: #FE8585;
 }
 .profile-image{
-    width: 4em;
-    height: 4em;
-    border-radius: 1em;
+    width: 3em;
+    height: 3em;
+    border-radius: 2em;
+    margin-top: 1.5em;
+    margin-left: 0.5em;
 }
 .btn-primary:active{
     background-color: #7a1300;
