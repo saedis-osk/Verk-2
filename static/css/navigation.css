@@ -3,7 +3,13 @@
     height: 6em;
     margin-bottom: 4em;
 }
-
+.name_display{
+    color: #FE8585;
+    margin-right: 2em;
+}
+.profile_button{
+    text-decoration: none;
+}
 .brand{
     margin-top:2em;
     position: absolute;
