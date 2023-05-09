@@ -10,6 +10,7 @@
 
 <!-- search button and make my own pizza button-->
 <form id="search-form">
+                <div class="search">
                 <input type="text" placeholder="Search.." class="search-input">
                 <button type="submit" class="search-button" id="search-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -17,11 +18,42 @@
                     </svg>
 
                 </button>
+                    </div>
 
                 <div class="d-grid mb-2">
                 <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'topping-index' %}">Make My Own Pizza</a>
                 </div>
+
+
+
+<div class="sorting">
+
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter:
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Vegan</a></li>
+    <li><a class="dropdown-item" href="#">Fruity</a></li>
+    <li><a class="dropdown-item" href="#">Popular</a></li>
+  </ul>
+</div>
+
+
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort:
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Price</a></li>
+    <li><a class="dropdown-item" href="#">Alphabetically</a></li>
+  </ul>
+</div>
+</div>
+
 </form>
+
+
 
 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -277,54 +309,7 @@
 
     <!-- offers:-->
 
-     <section class="py-5 bg-transparent">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Offers</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/date_night_offer.jpeg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Date Night Offer</h5>
-                                    <!-- Product price-->
-                                    2.000kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/party_offer.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Party Offer</h5>
-                                    <!-- Product price-->
-                                    2.000kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'topping-index' %}">View</a></div>
-                            </div>
-                        </div>
-                    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 <script src="{% static 'js/menu.js' %}"></script>
 

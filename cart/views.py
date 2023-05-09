@@ -3,12 +3,18 @@ from cart.models import Cart
 from django.contrib.auth.models import User
 # Create your views here.
 
+# Create your views here.
+from django.shortcuts import render
+
 
 
 
 
 
 def index(request):
+
+    return render(request, 'cart/index.html')
+
     context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
     return render(request, 'cart/index.html', context)
 
@@ -29,3 +35,4 @@ def create_cart(request):
 def profile_view(request, username):
     user = User.objects.get(username=username)
     return render(request, 'profile.html', {'user': user})
+
