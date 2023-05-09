@@ -5,11 +5,29 @@ from django.db import models
 class PizzaCategory(models.Model):
     name = models.CharField(max_length=255)
 
-class Toppings(models.Model):
+class ToppingsCandy(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
-    # topping = Toppings.objects.first()
-    # topping_id = topping.id if topping else 1
+    image = models.ImageField(upload_to='toppings/candy/', default='/toppings/candy/default.png')
+
+
+    def __str__(self):
+        return self.name
+
+
+class ToppingsFruit(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    image = models.ImageField(upload_to='toppings/fruit/', default='/toppings/fruit/default.png')
+
+    def __str__(self):
+        return self.name
+
+
+class ToppingsSauces(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    image = models.ImageField(upload_to='toppings/sauces/', default='/toppings/sauces/default.png')
 
     def __str__(self):
         return self.name
@@ -20,10 +38,11 @@ class Pizza(models.Model):
     category = models.ForeignKey(PizzaCategory, on_delete=models.CASCADE, null=True, blank=True)
     ingredient = models.CharField(max_length=255, blank=True)
     size = models.CharField(max_length=255, blank=True)
-    toppings = models.ForeignKey(Toppings, on_delete=models.CASCADE, default=Toppings)
+    toppings_candy = models.ForeignKey(ToppingsCandy, on_delete=models.CASCADE, default=ToppingsCandy)
+    toppings_fruit = models.ForeignKey(ToppingsFruit, on_delete=models.CASCADE, default=ToppingsFruit)
+    toppings_sauces = models.ForeignKey(ToppingsSauces, on_delete=models.CASCADE, default=ToppingsSauces)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
-
 
     def __str__(self):
         return self.name

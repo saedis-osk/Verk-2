@@ -1,0 +1,11 @@
+<!-- toppings.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Toppings</h1>
+  <ul>
+    {% for topping in toppings %}
+      <li>{{ topping.name }} - {{ topping.description }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
