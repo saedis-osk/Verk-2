@@ -3,7 +3,13 @@
     height: 6em;
     margin-bottom: 4em;
 }
-
+.name_display{
+    color: #FE8585;
+    margin-right: 2em;
+}
+.profile_button{
+    text-decoration: none;
+}
 .brand{
     margin-top:2em;
     position: absolute;
@@ -13,6 +19,7 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 .bi.bi-cart4{
     color: #FE8585;
 }
@@ -32,7 +39,10 @@ body{
     background-color: brown;
     border-color: #FE8585;
 }
-
+.profile-image{
+    width: 2em;
+    height: 1em;
+}
 .btn-primary:active{
     background-color: #7a1300;
 }
