@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Profile</h1>
-    <form class="form form-horizontal" method="post">
+    <form class="form form-horizontal" method="post" enctype="multipart/form-data">
         <img src="{{ user.profile.profile_image }}" class="profile-image"/>
         {% csrf_token %}
         {{ form }}
