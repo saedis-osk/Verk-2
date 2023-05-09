@@ -8,13 +8,15 @@
             <div class="row d-flex justify-content-center align-items-center h-100">
 
         {% csrf_token %}
-<img src="{{user.profile.profile_image.url}}" class="profile_image"/>
+
         {{ form }}
 
 
             </div>
 
         </div>
+    <img src="{{user.profile.profile_image.url}}" class="profile_image" id="id_profile_image"/>
         <input type="submit" class="btn btn-primary" value="update"/>
                </form>
+
 {% endblock %}

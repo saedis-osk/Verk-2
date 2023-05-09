@@ -33,7 +33,7 @@ def profile(request):
             # Resize and save profile image
             if profile.profile_image:
                 image = Image.open(profile.profile_image.path)
-                output_size = (300, 300)
+                output_size = (480, 480)
                 image.thumbnail(output_size)
                 image.save(profile.profile_image.path)
 
