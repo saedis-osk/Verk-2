@@ -40,8 +40,9 @@ body{
     border-color: #FE8585;
 }
 .profile-image{
-    width: 2em;
-    height: 1em;
+    width: 4em;
+    height: 4em;
+    border-radius: 1em;
 }
 .btn-primary:active{
     background-color: #7a1300;

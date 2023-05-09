@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+def __str__(self):
+    return f"{self.user.username} Profile - {self.profile_image.url}"
+
 
 
 # Create your models here.
@@ -27,5 +30,5 @@ class Account(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=True)
-    profile_image = models.ImageField(upload_to='profile_images', blank=True, null=True )
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True)
 
