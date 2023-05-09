@@ -26,5 +26,6 @@ class Account(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_image = models.CharField(max_length=9999)
+    name = models.CharField(max_length=255, blank=True)
+    profile_image = models.ImageField(upload_to='profiles')
 

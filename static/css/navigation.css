@@ -32,7 +32,10 @@ body{
     background-color: brown;
     border-color: #FE8585;
 }
-
+.profile-image{
+    width: 2em;
+    height: 1em;
+}
 .btn-primary:active{
     background-color: #7a1300;
 }
