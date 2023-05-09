@@ -1,8 +1,19 @@
 from django.db import models
 from menu.models import Pizza
 from user.models import User
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
+
+class Payment(models.Model):
+    cc_number = CardNumberField(_('card number'))
+    cc_expiry = CardExpiryField(_('expiration date'))
+    cc_code = SecurityCodeField(_('security code'))
+
+    def __str__(self):
+        return f'{self.cc_number} - {self.cc_expiry}'
+
 
 
 class Cart(models.Model):
@@ -15,34 +26,10 @@ class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-        # def __str__(self):
-        #     return self.name
+    def __str__(self):
+        return f'{self.quantity} x {self.size} {self.pizza.name} ({self.toppings})'
 
 
 
-# class CandyCategory(models.Model):
-#     name = models.CharField(max_length=255)
-#
-#     def __str__(self):
-#         return self.name
 
 
-# class Candy(models.Model):
-#     name = models.CharField(max_length=255)
-#     description = models.CharField(max_length=255, blank=True)
-#     category = models.ForeignKey(CandyCategory, on_delete=models.CASCADE)
-#     price = models.FloatField()
-#     on_sale = models.BooleanField()
-#     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.name
-
-
-# class CandyImage(models.Model):
-#     image = models.CharField(max_length=9999)
-#     candy = models.ForeignKey(Candy, on_delete=models.CASCADE)
-#     logo = models.CharField(max_length=9999, blank=True)
-
-    # def __str__(self):
-    #     return self.image
