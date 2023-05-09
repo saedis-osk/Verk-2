@@ -48,9 +48,6 @@ INSTALLED_APPS = [
     'menu.apps.MenuConfig',
     'cart.apps.CartConfig',
     'home.apps.HomeConfig',
-    'toppings.apps.ToppingsConfig',
-    'drinks.apps.DrinksConfig',
-    'offers.apps.OffersConfig',
     'user.apps.UserConfig'
 
 ]
