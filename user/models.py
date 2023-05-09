@@ -13,7 +13,7 @@ class Account(models.Model):
     phone_number = models.CharField(max_length=15, blank=True)
     mail = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='users/', default='users/default.png')
+    image = models.ImageField(upload_to='users/', default='users/default.png', blank=True)
 
 # class CardInfo(models.Model):
 #     card_number

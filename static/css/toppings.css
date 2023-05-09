@@ -72,7 +72,14 @@ label .checked {
   margin-right: 1em;
 }
 
-img:not(.brand .profile-image) {
+img:not(.brand) {
+  width: 6em;
+  border: 1px solid #FE8585;
+  padding: 2px;
+  height: 6em;
+}
+
+img:not(.profile-image) {
   width: 6em;
   border: 1px solid #FE8585;
   padding: 2px;
