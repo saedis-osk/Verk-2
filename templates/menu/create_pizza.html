@@ -26,21 +26,19 @@
                     <label class="btn btn-secondary">
                         <input type="radio" name="options" id="option3" autocomplete="off"> Large
                     </label>
-                    <div class="toppings-container">
-                        {% for type, toppings in toppings_by_type %}
-                            <h4>{{ type }}</h4>
-                            {% for topping in toppings %}
-                                <div class="topping">
-                                    <label class="myCheckbox">
-                                        <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
-                                        <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
-                                    </label>
-                                    <span>{{ topping.name }}</span>
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
-                    </div>
 
+        {% for type, toppings in toppings_by_type.items %}
+                <h4>{{ type }}</h4>
+                {% for topping in toppings %}
+                    <div class="topping">
+                        <label class="myCheckbox">
+                            <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                            <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
+                        </label>
+                        <span>{{ topping.name }}</span>
+                    </div>
+                {% endfor %}
+            {% endfor %}
 
 
                 <h4>Drizzle on top?</h4>

@@ -41,7 +41,7 @@ def create_pizza(request):
 
             toppings_ids = request.POST.getlist('toppings')
             toppings = Toppings.objects.filter(id__in=toppings_ids)
-            toppings_by_type = groupby(toppings, lambda t: t.type)
+            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             for topping in toppings:
                 print(topping)
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
@@ -58,12 +58,11 @@ def create_pizza(request):
     else:
         form = PizzaCreateForm()
         toppings = Toppings.objects.all()
-        toppings_by_type = groupby(toppings, lambda t: t.type)
+        toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
     return render(request, 'menu/create_pizza.html', {
         'form': form,
         'toppings_by_type': toppings_by_type,
     })
-
 
 
 def delete_pizza(request, id):
