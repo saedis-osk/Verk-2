@@ -21,14 +21,11 @@ class Cart(models.Model):
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     price = models.FloatField(default=0.0)
     quantity = models.IntegerField(default=1)
-    size = models.CharField(max_length=10)
-    toppings = models.CharField(max_length=255, blank=True)
-
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.quantity} x {self.size} {self.pizza.name} ({self.toppings})'
+        return f'{self.quantity} x {self.pizza.name} )'
 
 
 
