@@ -32,7 +32,4 @@ urlpatterns = [
 
     path('homes/', include('home.urls')),
 
-    path('menus/create_pizza', include('menu.urls'))
-
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

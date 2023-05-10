@@ -85,11 +85,13 @@ def update_pizza(request, id):
         'id': id
     })
 
-def menu(request):
-    pizzas = Pizza.objects.all()
-    drinks = Drink.objects.all()
-    context = {'pizzas': pizzas, 'drinks': drinks}
-    return render(request, 'menu/menu.html', context)
+
+def offers(request):
+    return render(request, 'menu/offers.html')
+
+def drinks(request):
+    return render(request, 'menu/drinks.html')
+
 
 
 
