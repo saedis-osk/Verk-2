@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from menu.models import Pizza, Drink, ToppingsCandy, ToppingsFruit, ToppingsSauces
+from menu.models import Pizza, Drink, Toppings
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm
 
 # Create your views here.
@@ -19,18 +19,6 @@ def index(request):
 
     context = {'pizza': Pizza.objects.all().order_by('name')}
     return render(request, 'menu/index.html', context)
-
-
-
-def toppings_view(request):
-    toppings_candy = ToppingsCandy.objects.all()
-    toppings_fruit = ToppingsFruit.objects.all()
-    toppings_sauces = ToppingsSauces.objects.all()
-    return render(request, 'menu/pizza_details.html', {
-        'toppings_candy': toppings_candy,
-        'toppings_fruit': toppings_fruit,
-        'toppings_sauces': toppings_sauces,
-    })
 
 
 

@@ -2,45 +2,25 @@ from django.db import models
 
 # Create your models here.
 
-class PizzaCategory(models.Model):
-    name = models.CharField(max_length=255)
 
-class ToppingsCandy(models.Model):
+class Toppings(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='toppings/candy/', default='/toppings/candy/default.png')
+    image = models.ImageField(upload_to='toppings/', default='/toppings/default.png')
+    type = models.CharField(max_length=10)
 
 
     def __str__(self):
         return self.name
 
-
-class ToppingsFruit(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='toppings/fruit/', default='/toppings/fruit/default.png')
-
-    def __str__(self):
-        return self.name
-
-
-class ToppingsSauces(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='toppings/sauces/', default='/toppings/sauces/default.png')
-
-    def __str__(self):
-        return self.name
 
 class Pizza(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
-    category = models.ForeignKey(PizzaCategory, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.CharField(max_length=10, null=True, blank=True)
     ingredient = models.CharField(max_length=255, blank=True)
     size = models.CharField(max_length=255, blank=True)
-    toppings_candy = models.ForeignKey(ToppingsCandy, on_delete=models.CASCADE, default=ToppingsCandy)
-    toppings_fruit = models.ForeignKey(ToppingsFruit, on_delete=models.CASCADE, default=ToppingsFruit)
-    toppings_sauces = models.ForeignKey(ToppingsSauces, on_delete=models.CASCADE, default=ToppingsSauces)
+    toppings = models.ForeignKey(Toppings, on_delete=models.CASCADE, default=Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
 
