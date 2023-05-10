@@ -42,17 +42,20 @@
 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
+                    {% for drinks in drink.all %}
+
                      <div class="col mb-5">
+
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/americano.jpg" alt="..." />
+                            <img class="card-img-top" src="{{ drink.image.url }}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Americano</h5>
+                                    <h5 class="fw-bolder">{{ drink.name }}</h5>
                                     <!-- Product price-->
-                                    550kr
+                                    {{ drink.price }}kr
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -60,137 +63,16 @@
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
                             </div>
                         </div>
+
                     </div>
 
+      </div>
+                      </div>
 
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/cappuccino.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Cappuccino</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/hot_chocolate.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Hot Chocolate</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/iced_coffee.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Iced Coffee</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/latte.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Latte</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
+         </section>
+        {% endfor %}
 
 
-
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/mocha.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Mocha</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                        <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/drinks/espresso.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Espresso</h5>
-                                    <!-- Product price-->
-                                    550kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'cart-index' %}">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-
- </div>
-                 </div>
-
-        </section>
 
 
 {% include 'footer.html' %}

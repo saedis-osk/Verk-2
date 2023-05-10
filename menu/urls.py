@@ -5,7 +5,7 @@ from .views import drinks
 from .views import offers
 
 urlpatterns = [
-    path('', views.index, name="menu-index"),
+    path('menus/', views.index, name="menu-index"),
     path('<int:id>', views.get_pizza_by_id, name="pizza_details"),
     path('create_pizza', views.create_pizza, name="create_pizza"),
     path('delete_pizza/<int:id>', views.delete_pizza, name="delete_pizza"),

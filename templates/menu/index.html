@@ -15,13 +15,14 @@
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
                 </button>
-                    </div>
+                </form>
+         </div>
 
                 <div class="d-grid mb-2">
                     <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'create_pizza'%}">Make My Own Pizza</a>
                 </div>
-            </form>
-        </div>
+
+
     </section>
 
     <!-- Pizzas:-->
@@ -45,59 +46,18 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url '' %}">View</a></div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
+
     </section>
 
-    <!-- offers:-->
 
-     <section class="py-5 bg-transparent">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Offers</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/date_night_offer.jpeg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Date Night Offer</h5>
-                                    <!-- Product price-->
-                                    2.000kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="/static/images/party_offer.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Party Offer</h5>
-                                    <!-- Product price-->
-                                    2.000kr
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'create_pizza' %}">View</a></div>
-                            </div>
-                        </div>
-                    </div>
+
 
 
 <script src="{% static 'js/menu.js' %}"></script>
