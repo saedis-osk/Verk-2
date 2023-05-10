@@ -3,9 +3,12 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
+    <script src="{% static 'js/menu.js' %}"></script>
     <div class="card">
         <div class="card-body p-4">
-            <h3 class="selected-pizza">Name of selected pizza JS</h3>
+
+            <h3 class="selected-pizza" id="selected-pizza"></h3>
+            <script>getSelectedPizza();</script>
             <h5 class="selected-pizza">Description of the pizza</h5>
 
             <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post" enctype="multipart/form-data">

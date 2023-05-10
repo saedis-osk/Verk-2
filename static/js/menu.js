@@ -23,7 +23,6 @@ function handleSearch(event) {
   console.log(`Search query: ${searchQuery}`);
 }
 
-// Add an event listener to the search form
 document.addEventListener('DOMContentLoaded', () => {
   const searchForm = document.querySelector('#search-form');
 
@@ -33,3 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Search form not found');
   }
 });
+
+function selectPizza(event) {
+  const pizzaName = event.currentTarget.getAttribute('data-pizza-name');
+  const pizzaDescription = event.currentTarget.getAttribute('data-pizza-description');
+
+  localStorage.setItem('selectedPizzaName', pizzaName);
+
+  window.location.href = '/menus/create_pizza';
+}
+
+const selectButtons = document.getElementsByClassName('pizza-select-button');
+for (let i = 0; i < selectButtons.length; i++) {
+  selectButtons[i].addEventListener('click', selectPizza);
+}
+
+function getSelectedPizza(event) {
+  const selectedPizzaName = localStorage.getItem('selectedPizzaName');
+  const selectedPizzaElement = document.getElementById('selected-pizza');
+  selectedPizzaElement.textContent = selectedPizzaName;
+}
+
+
+
