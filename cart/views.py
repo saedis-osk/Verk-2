@@ -7,6 +7,9 @@ from cart.forms.forms import CartCreateForm
 # Create your views here.
 
 def index(request):
+
+    return render(request, 'cart/index.html')
+
     context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
     return render(request, 'cart/index.html', context)
 

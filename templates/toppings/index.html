@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
+    <div class="card">
+    <div class="card-body p-4">
+        <h3 class="selected-pizza">Name of selected pizza JS</h3>
+            <h5 class="selected-pizza">Description of the pizza</h5>
+
+        <form>
+
+<h4>Sauces for the base</h4>
+
+
+<div class="toppings-container">
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/chocolate_sauce.jpg" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Chocolate sauce</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/nutella.jpeg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Nutella</span>
+  </div>
+
+
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/peanut_butter.webp" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Peanut Butter</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/caramel_sauce.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Caramel Sauce</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/strawberry_sauce.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Strawberry sauce</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/raspberry_jam.jpeg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Raspberry jam </span>
+  </div>
+
+        <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/marshmallow_fluff.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Marshmallow fluff </span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/whipped_cream.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Whipped cream </span>
+  </div>
+
+
+
+</div>
+
+          <h4>Candy toppings</h4>
+
+
+<div class="toppings-container">
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/caramel_filled_choc_topping.png" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Caramel filled chocolate</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/smarties_topping.png" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Smarties</span>
+  </div>
+
+
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/powdered_sugar_topping.webp" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Powdered sugar</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/brownie_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Brownie bites</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/chocolate_chips_topping.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Chocolate chips</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/chocolate_shavings_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Chocolate shavings</span>
+  </div>
+
+        <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/gummy_bears_topping.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Gummy bears</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/marshmallow_topping.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Marshmallows </span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="" class="checked" alt="Vantar mynd">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Toffee </span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/candied_hazelnuts_topping.png" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Candied hazelnuts </span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/sour_gummies_topping.jpeg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Sour gummies</span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/licorice_topping.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Licorice</span>
+  </div>
+
+
+
+
+</div>
+
+ <h4>Fruit toppings</h4>
+
+
+<div class="toppings-container">
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/cherries_topping.jpg" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Cherries</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/blackberries_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Blackberries</span>
+  </div>
+
+
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/raspberries_topping.webp" class="checked" alt="chocolate sauce">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Raspberries</span>
+  </div>
+
+  <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/strawberries_topping." class="checked" alt="Vantar mynd">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Strawberries</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/blueberries_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Blueberries</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/pineapple_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Pineapple</span>
+  </div>
+
+        <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/bananas_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Bananas</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/kiwi_topping.webp" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Kiwi</span>
+  </div>
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/mango_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Mango</span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/coconut_shavings.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Coconut shavings</span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/cranberries_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Cranberries</span>
+  </div>
+
+
+      <div class="topping">
+    <label class="myCheckbox">
+      <img src="/static/images/toppings/grapes_topping.jpg" class="checked" alt="nutella">
+      <input type="checkbox" class="myCheckbox" style="display: none;">
+    </label>
+    <span>Grapes</span>
+  </div>
+
+
+</div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <a class="btn btn-primary me-md-2 " href="{% url 'cart-index' %}">Add to cart</a>
+
+</div>
+
+
+
+
+
+        </form>
+
+    </div>
+    </div>
+
+
+<script src="{% static 'js/toppings.js' %}"></script>
+
+{% endblock %}
