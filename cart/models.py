@@ -25,7 +25,7 @@ class Cart(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.quantity} x {self.size} {self.pizza.name} ({self.toppings})'
+        return f'{self.quantity} x {self.pizza.name} )'
 
 
 
