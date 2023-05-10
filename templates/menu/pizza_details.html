@@ -8,7 +8,7 @@
     <p>{{pizza.toppings}}</p>
     <p>${{pizza.price}}</p>
     {% for pizza_image in pizza.pizzaImage_set.all%}
-            <img src="{{pizza_image.image}}" class="pizza-image"/>
+            <img src="{{ pizza_image.image }}" class="pizza-image"/>
     {% endfor %}
     <a href="{% url  'delete_pizza' pizza.id %}"class="block btn btn-primary">Delete pizza</a>
     <a href="{% url  'update_pizza' pizza.id %}"class="block btn btn-primary">Update pizza</a>

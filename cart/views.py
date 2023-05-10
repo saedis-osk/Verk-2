@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from creditcards import types
 from cart.forms.forms import CartCreateForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-
     return render(request, 'cart/index.html')
 
     context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
@@ -55,3 +55,22 @@ def confirmation(request):
 
 def checkout(request):
     return render(request, 'cart/checkout.html')
+
+@login_required
+def add_to_cart(request):
+    if request.method == 'POST':
+        form = CartCreateForm(request.POST)
+        if form.is_valid():
+            cart_item = form.save(commit=False)
+            cart_item.user = request.user
+            cart_item.pizza = Pizza.objects.get(id=request.POST['pizza_id'])
+            cart_item.save()
+            toppings = request.POST.getlist('toppings')
+            cart_item.toppings.set(toppings)
+
+            return redirect('cart')
+
+    else:
+        form = CartCreateForm()
+
+    return render(request, 'add_to_cart.html', {'form': form})

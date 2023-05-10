@@ -12,15 +12,10 @@ class PaymentForm(forms.Form):
 class CartCreateForm(ModelForm):
     class Meta:
         model = Cart
-        exclude = ['id']
+        exclude = ['id', 'price']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'pizza': forms.TextInput(attrs={'class': 'form-control'}),
             'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
-            'size': forms.TextInput(attrs={'class': 'form-control'}),
-            'toppings': forms.TextInput(attrs={'class': 'form-control'}),
-            'created_at': forms.DateInput(attrs={'class': 'form-control'}),
-            'updated_at': forms.DateInput(attrs={'class': 'form-control'}),
         }
 
 
