@@ -12,9 +12,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-<!--
+ <li class="nav-item dropdown">
+  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="menuDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    Menu
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+     <li><a class="dropdown-item" href="{% url 'menu-index' %}">Candy pizzas</a></li>
+    <li><a class="dropdown-item" href="{% url 'drinks' %}">Drinks</a></li>
+      <li><a class="dropdown-item" href="{% url 'offers' %}">Offers</a></li>
 
-      -->
 
   </ul>
 </li>
