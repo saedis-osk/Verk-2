@@ -48,3 +48,10 @@ def profile_view(request, username):
     user = User.objects.get(username=username)
     return render(request, 'profile.html', {'user': user})
 
+
+def confirmation(request):
+    return render(request, 'cart/confirmation.html')
+
+
+def checkout(request):
+    return render(request, 'cart/checkout.html')
