@@ -1,5 +1,5 @@
 $(document).ready(function (){
-    $('#search-btn').on(types:'click', selector:function(e){
+    $('#search-btn').on(types:'click', selector:function(e{
         e.preventDefault()
         var searchText = $('#search-box').val();
         $.ajax(url:
