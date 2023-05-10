@@ -1,52 +1,6 @@
 from django import forms
 from django.forms import ModelForm, widgets
-from menu.models import Pizza, Toppings
-
-
-# class PizzaCreateForm(forms.ModelForm):
-#     toppings_candy = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsCandy.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#     toppings_fruit = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsFruit.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#     toppings_sauces = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsSauces.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#
-#     class Meta:
-#         model = Pizza
-#         exclude = ['id']
-#         fields = ('name', 'description', 'image')
-#
-# class PizzaUpdateForm(forms.ModelForm):
-#     toppings_candy = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsCandy.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#     toppings_fruit = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsFruit.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#     toppings_sauces = forms.ModelMultipleChoiceField(
-#         queryset=ToppingsSauces.objects.all(),
-#         widget=forms.CheckboxSelectMultiple,
-#         required=False
-#     )
-#
-#     class Meta:
-#         model = Pizza
-#         exclude = ['id']
-#         fields = ('name', 'description', 'image')
-
+from menu.models import Pizza, Toppings, Drink, Offer
 
 
 class PizzaUpdateForm(ModelForm):
@@ -78,4 +32,28 @@ class PizzaCreateForm(ModelForm):
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'})
+        }
+
+class DrinkCreateForm(ModelForm):
+    image = forms.FileField(required=True, widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Drink
+        exclude = ['id']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+            'size': forms.TextInput(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'})
+        }
+
+class OfferCreateForm(ModelForm):
+    image = forms.FileField(required=True, widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Offer
+        exclude = ['id']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+            'size': forms.TextInput(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'})
         }

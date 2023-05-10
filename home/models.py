@@ -1,13 +1,15 @@
 from django.db import models
-
+from menu.models import Pizza, Drink
 # Create your models here.
 
-# class Manufacturer(models.Model):
-#     name = models.CharField(max_length=255)
-#     year_of_start = models.DateTimeField()
-#     logo = models.CharField(max_length=9999, blank=True)
-#
-#     def __str__(self):
-#         return self.name
 
+class PopularOffer(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.FloatField()
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    description = models.CharField(max_length=255, blank=True)
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='offer/', default='offer/default.png')
 
+    def __str__(self):
+        return self.name

@@ -5,9 +5,6 @@ from . import views
 from .views import drinks
 from .views import offers
 
-# from .views import toppings_view
-
-
 
 urlpatterns = [
     path('menus/', views.index, name="menu-index"),
@@ -17,10 +14,5 @@ urlpatterns = [
     path('update_pizza/<int:id>', views.update_pizza, name="update_pizza"),
     path('drinks', views.drinks, name='drinks'),
     path('offers', views.offers, name='offers')
-    # path('menu', views.menu, name="menu"),
 ]
-
-# path('toppings/', toppings_view, name='toppings'),
-# path('drinks/', drinks_view, name='drinks'),
-# path('offers/', offers_view, name='offers')
 
