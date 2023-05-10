@@ -18,8 +18,6 @@ def register(request):
         'form': UserCreationForm()
     })
 
-from PIL import Image
-
 @login_required
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -36,7 +34,6 @@ def profile(request):
                 output_size = (480, 480)
                 image.thumbnail(output_size)
                 image.save(profile.profile_image.path)
-
             return redirect('profile')
     else:
         form = ProfileForm(instance=profile, initial={'user': request.user})

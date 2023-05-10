@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% if card_type %}
+  <p>Your credit card type is {{ card_type }}.</p>
+{% else %}
+  <p>An error occurred: {{ error }}.</p>
+{% endif %}
+card_type_form.html

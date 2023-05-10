@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{cart.user}}</h1>
+    <p>{{cart.pizza}}</p>
+    <p>{{cart.quantity}}</p>
+    <p>{{cart.size}}</p>
+    <p>{{cart.toppings}}</p>
+    <p>{{cart.created_at}}</p>
+    <p>{{cart.updated_at}}</p>
+    <p>${{cart.price}}</p>
+<!--    {% for cart_image in cart.cartimage_set.all%}-->
+<!--            <img src="{{cart_image.image}}" class="cart-image"/>-->
+<!--    {% endfor %}-->
+{% endblock %}

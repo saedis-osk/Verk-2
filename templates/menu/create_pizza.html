@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
+    <div class="card">
+        <div class="card-body p-4">
+            <h3 class="selected-pizza">Name of selected pizza JS</h3>
+            <h5 class="selected-pizza">Description of the pizza</h5>
+
+            <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post">
+                {% csrf_token %}
+                <input  type="submit" value="Create" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0 "/>
+
+                <h4>Base</h4>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Small
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Medium
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> Large
+                    </label>
+                </div>
+
+                <div class="toppings-container">
+                    <h4>Sauces for the base</h4>
+                    {% for topping in toppings_sauces.all %}
+                        <div class="topping">
+                            <label class="myCheckbox">
+                                <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                                <input type="checkbox" class="myCheckbox" style="display: none;">
+                            </label>
+                            <span>{{ topping.name }}</span>
+                        </div>
+                    {% endfor %}
+
+                    <h4>Candy toppings</h4>
+                    {% for topping in toppings_candy.all %}
+                        <div class="topping">
+                            <label class="myCheckbox">
+                                <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                                <input type="checkbox" class="myCheckbox" style="display: none;">
+                            </label>
+                            <span>{{ topping.name }}</span>
+                        </div>
+                    {% endfor %}
+
+                    <h4>Fruit toppings</h4>
+                    {% for topping in toppings_fruit.all %}
+                        <div class="topping">
+                            <label class="myCheckbox">
+                                <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                                <input type="checkbox" class="myCheckbox" style="display: none;">
+                            </label>
+                            <span>{{ topping.name }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <h4>Drizzle on top?</h4>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a class="btn btn-primary me-md-2 " href="{% url 'cart-index' %}">Add to cart</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/toppings.js' %}"></script>
+{% endblock %}
