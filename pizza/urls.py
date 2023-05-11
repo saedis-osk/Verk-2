@@ -28,8 +28,6 @@ urlpatterns = [
 
     path('menus/', include('menu.urls')),
 
-    path('carts/', include('cart.urls')),
-
     path('homes/', include('home.urls')),
 
     path('menus/create_pizza', include('menu.urls'))
