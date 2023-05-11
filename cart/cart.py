@@ -1,5 +1,4 @@
 import datetime
-import .models
 
 CART_ID = 'CART-ID'
 
@@ -91,4 +90,6 @@ class Cart:
     def clear(self):
         for item in self.cart.item_set.all():
             item.delete()
+
+
 

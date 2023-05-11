@@ -4,6 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .cart import Cart
 
 
+def index(request):
+    return render(request, 'cart/index.html')
+
+    context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
+    return render(request, 'cart/index.html', context)
+
+
 # Create your views here.
 @login_required(login_url="/users/login")
 def cart_add(request, id):

@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-    # http://localhost:8000/manufactures
+
 urlpatterns = [
     path('', views.index, name="home-index"),
 ]
