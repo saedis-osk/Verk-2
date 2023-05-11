@@ -40,13 +40,6 @@ class Drink(models.Model):
         return self.name
 
 
-# class PizzaToppings(models.Model):
-#     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-#     topping = models.ForeignKey(Toppings, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.pizza
-
 
 class Offer(models.Model):
     name = models.CharField(max_length=255)
