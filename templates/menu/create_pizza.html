@@ -29,16 +29,19 @@
                 </div>
 
                 {% for type, toppings in toppings_by_type.items %}
-                    <h4>{{ type }}</h4>
-                    {% for topping in toppings %}
-                        <div class="topping">
-                            <label class="myCheckbox">
-                                <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
-                                <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
-                            </label>
-                            <span>{{ topping.name }}</span>
-                        </div>
-                    {% endfor %}
+                <h4>{{ type }}</h4>
+                {% for topping in toppings %}
+                    <div class="topping">
+                        <label class="myCheckbox">
+                            <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                            <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
+                            <div class="topping-details">
+                                <span class="topping-name">{{ topping.name }}</span>
+                                <span class="topping-price">{{ topping.price }}</span>
+                            </div>
+                        </label>
+                    </div>
+                {% endfor %}
                 {% endfor %}
 
                 <h4>Drizzle on top?</h4>
@@ -49,6 +52,8 @@
             </form>
         </div>
     </div>
-<script src="{% static 'js/toppings.js' %}"></script>
+
+    <script src="{% static 'js/toppings.js' %}"></script>
+
 {% endblock %}
 

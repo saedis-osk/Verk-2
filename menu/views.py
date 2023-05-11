@@ -1,8 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from menu.models import Pizza, Drink, Toppings
-from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm
-from cart.cart import Cart
+from menu.models import Pizza, Drink, Toppings, Offer
+from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 
 # Create your views here.
@@ -29,10 +28,6 @@ def get_pizza_by_id(request, id):
         'pizza': get_object_or_404(Pizza, pk=id)
     })
 
-
-from itertools import groupby
-
-
 def create_pizza(request):
     toppings_by_type = {}  # Initialize toppings_by_type here
 
@@ -47,9 +42,7 @@ def create_pizza(request):
 
             toppings_ids = request.POST.getlist('toppings')
             toppings = Toppings.objects.filter(id__in=toppings_ids)
-            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             for topping in toppings:
-                print(topping)
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
                 if topping_image:
                     topping.image = topping_image
@@ -57,6 +50,7 @@ def create_pizza(request):
                 pizza.toppings.add(topping)
                 cart = Cart(request)
                 cart.add(pizza.id)
+            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
                 'toppings_by_type': toppings_by_type,
@@ -72,6 +66,41 @@ def create_pizza(request):
         'toppings_by_type': toppings_by_type,
     })
 
+
+# def create_pizza(request):
+#     if request.method == 'POST':
+#         form = PizzaCreateForm(data=request.POST, files=request.FILES)
+#         if form.is_valid():
+#             pizza = form.save(commit=False)
+#             pizza_image = request.FILES.get('image')
+#             if pizza_image:
+#                 pizza.image = pizza_image
+#             pizza.save()
+#
+#             toppings_ids = request.POST.getlist('toppings')
+#             toppings = Toppings.objects.filter(id__in=toppings_ids)
+#             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+#             for topping in toppings:
+#                 print(topping)
+#                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
+#                 if topping_image:
+#                     topping.image = topping_image
+#                     topping.save()
+#                 PizzaToppings.objects.create(pizza=pizza, topping=topping)  # Updated this line
+#
+#             context = {
+#                 'pizza': pizza,
+#                 'toppings_by_type': toppings_by_type,
+#             }
+#             return render(request, 'menu/create_pizza.html', context)
+#     else:
+#         form = PizzaCreateForm()
+#         toppings = Toppings.objects.all()
+#         toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+#     return render(request, 'menu/create_pizza.html', {
+#         'form': form,
+#         'toppings_by_type': toppings_by_type,
+#     })
 
 def delete_pizza(request, id):
     pizza = get_object_or_404(Pizza, pk=id)
@@ -93,11 +122,31 @@ def update_pizza(request, id):
         'id': id
     })
 
-def menu(request):
-    pizzas = Pizza.objects.all()
+
+
+def drinks(request):
+    if request.method == 'POST':
+        form = DrinkCreateForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            drink = form.save(commit=False)
+            drink_image = request.FILES.get('image')
+            if drink_image:
+                drink.image = drink_image
+            drink.save()
     drinks = Drink.objects.all()
-    context = {'pizzas': pizzas, 'drinks': drinks}
-    return render(request, 'menu/menu.html', context)
+    context = {'drinks': drinks}
+    return render(request, 'menu/drinks.html', context)
 
-
+def offers(request):
+    if request.method == 'POST':
+        form = OfferCreateForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            offer = form.save(commit=False)
+            offer_image = request.FILES.get('image')
+            if offer_image:
+                offer.image = offer_image
+            offer.save()
+    offers = Offer.objects.all()
+    context = {'offers': offers}
+    return render(request, 'menu/offers.html', context)
 

@@ -15,5 +15,15 @@ class Item(models.Model): #PRODUCT ER PARENT AF PIZZA, DRINKS OG OFFERS
 
     class Meta:
         app_label = 'cart.item'
+# Create your models here.
+
+class Payment(models.Model):
+    cc_number = CardNumberField(_('card number'))
+    cc_expiry = CardExpiryField(_('expiration date'))
+    cc_code = SecurityCodeField(_('security code'))
+
+    def __str__(self):
+        return f'{self.cc_number} - {self.cc_expiry}'
+
 
 
