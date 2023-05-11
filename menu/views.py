@@ -29,7 +29,12 @@ def get_pizza_by_id(request, id):
     })
 
 
+from itertools import groupby
+
+
 def create_pizza(request):
+    toppings_by_type = {}  # Initialize toppings_by_type here
+
     if request.method == 'POST':
         form = PizzaCreateForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -59,6 +64,7 @@ def create_pizza(request):
         form = PizzaCreateForm()
         toppings = Toppings.objects.all()
         toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+
     return render(request, 'menu/create_pizza.html', {
         'form': form,
         'toppings_by_type': toppings_by_type,

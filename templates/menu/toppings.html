@@ -3,9 +3,13 @@
 
 {% block content %}
   <h1>Toppings</h1>
-  <ul>
+  <form method="post" action="{% url 'cart_add' 1 %}">
     {% for topping in toppings %}
       <li>{{ topping.name }} - {{ topping.description }}</li>
     {% endfor %}
-  </ul>
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Add To Cart</button>
+  </form>
 {% endblock %}
+

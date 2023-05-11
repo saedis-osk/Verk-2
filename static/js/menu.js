@@ -53,5 +53,30 @@ function getSelectedPizza(event) {
   selectedPizzaElement.textContent = selectedPizzaName;
 }
 
+function addToCart() {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Serialize the form data
+    const formData = $('#add-to-cart-form').serialize();
+
+    // Send an AJAX POST request to the server
+    $.ajax({
+        url: '{% url "add_to_cart" %}',
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+            // Handle the successful response, if needed
+            // For example, display a success message or update the cart icon
+            console.log('Item added to cart successfully');
+        },
+        error: function(xhr, status, error) {
+            // Handle the error response, if needed
+            // For example, display an error message
+            console.error('Error adding item to cart:', error);
+        }
+    });
+}
+
 
 

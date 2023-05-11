@@ -2,18 +2,18 @@
 
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/toppings.css' %}" />
     <script src="{% static 'js/menu.js' %}"></script>
+
     <div class="card">
         <div class="card-body p-4">
-
             <h3 class="selected-pizza" id="selected-pizza"></h3>
             <script>getSelectedPizza();</script>
             <h5 class="selected-pizza">Description of the pizza</h5>
 
-            <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post" enctype="multipart/form-data">
+            <form class="form form-horizontal" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input  type="submit" value="Create" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0 "/>
+                <input type="hidden" name="pizza_id" value="1">
 
                 <h4>Base</h4>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -26,29 +26,29 @@
                     <label class="btn btn-secondary">
                         <input type="radio" name="options" id="option3" autocomplete="off"> Large
                     </label>
+                </div>
 
-        {% for type, toppings in toppings_by_type.items %}
-                <h4>{{ type }}</h4>
-                {% for topping in toppings %}
-                    <div class="topping">
-                        <label class="myCheckbox">
-                            <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
-                            <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
-                        </label>
-                        <span>{{ topping.name }}</span>
-                    </div>
+                {% for type, toppings in toppings_by_type.items %}
+                    <h4>{{ type }}</h4>
+                    {% for topping in toppings %}
+                        <div class="topping">
+                            <label class="myCheckbox">
+                                <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
+                                <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
+                            </label>
+                            <span>{{ topping.name }}</span>
+                        </div>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-
 
                 <h4>Drizzle on top?</h4>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary me-md-2 " href="{% url 'cart-index' %}">Add to cart</a>
+                    <button type="submit" class="btn btn-primary me-md-2">Add to Cart</button>
                 </div>
             </form>
         </div>
     </div>
-
-    <script src="{% static 'js/toppings.js' %}"></script>
+<script src="{% static 'js/toppings.js' %}"></script>
 {% endblock %}
+

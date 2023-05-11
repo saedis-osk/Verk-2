@@ -1,76 +1,50 @@
-from django.shortcuts import render, get_object_or_404
-from cart.models import Cart
-from django.contrib.auth.models import User
-from django.shortcuts import render
-from creditcards import types
-from cart.forms.forms import CartCreateForm
+from django.shortcuts import render, redirect
+from menu.models import Pizza
 from django.contrib.auth.decorators import login_required
+from .cart import Cart
+
+
 # Create your views here.
-
-def index(request):
-    return render(request, 'cart/index.html')
-
-    context = {'cart': Cart.objects.all().order_by('user')}#a ad rada fra user eda cart??
-    return render(request, 'cart/index.html', context)
-
-
-def detect_card_type(request):
-    if request.method == 'POST':
-        card_number = request.POST.get('card_number')
-        card_type = types.get_type(card_number)
-        if card_type is not None:
-            return render(request, 'card_type.html', {'card_type': card_type})
-        else:
-            return render(request, 'card_type.html', {'error': 'Could not determine card type.'})
-    else:
-        return render(request, 'card_type_form.html')
+@login_required(login_url="/users/login")
+def cart_add(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("home")
 
 
-
-def get_cart_by_id(request, id):
-    return render(request, 'cart/cart_details.html', {
-        'cart': get_object_or_404(Cart, pk=id)
-    })
-
-
-def create_cart(request):
-    if request.method == 'POST':
-        form = CartCreateForm(data=request.POST)
-        if form.is_valid():
-            cart = form.save()
-    else:
-        form = CartCreateForm()
-    return render(request, 'cart/create_cart.html', {
-        'form': form
-    })
-
-def profile_view(request, username):
-    user = User.objects.get(username=username)
-    return render(request, 'profile.html', {'user': user})
+@login_required(login_url="/users/login")
+def item_clear(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.remove(product)
+    return redirect("cart_detail")
 
 
-def confirmation(request):
-    return render(request, 'cart/confirmation.html')
+@login_required(login_url="/users/login")
+def item_increment(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.add(product=product)
+    return redirect("cart_detail")
 
 
-def checkout(request):
-    return render(request, 'cart/checkout.html')
+@login_required(login_url="/users/login")
+def item_decrement(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.decrement(product=product)
+    return redirect("cart_detail")
 
-@login_required
-def add_to_cart(request):
-    if request.method == 'POST':
-        form = CartCreateForm(request.POST)
-        if form.is_valid():
-            cart_item = form.save(commit=False)
-            cart_item.user = request.user
-            cart_item.pizza = Pizza.objects.get(id=request.POST['pizza_id'])
-            cart_item.save()
-            toppings = request.POST.getlist('toppings')
-            cart_item.toppings.set(toppings)
 
-            return redirect('cart')
+@login_required(login_url="/users/login")
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
 
-    else:
-        form = CartCreateForm()
 
-    return render(request, 'add_to_cart.html', {'form': form})
+@login_required(login_url="/users/login")
+def cart_detail(request):
+    return render(request, 'cart/cart_detail.html')
+

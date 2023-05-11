@@ -76,6 +76,5 @@ class PizzaCreateForm(ModelForm):
             'ingredient': widgets.TextInput(attrs={'class': 'form-control'}),
             'size': widgets.TextInput(attrs={'class': 'form-control'}),
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
-            'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'})
         }
