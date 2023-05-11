@@ -32,6 +32,12 @@ ALLOWED_HOSTS = []
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_AGE = 1209600
+
+CART_ID = "cart_id"
+
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
 )
@@ -97,8 +103,6 @@ DATABASES = {
         'PASSWORD': 'Abc.12345',
         'HOST': '34.88.199.104',
         'PORT': '5432',
-
-
     }
 }
 

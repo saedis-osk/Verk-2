@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from menu.models import Pizza, Drink, Toppings
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm
+from cart.cart import Cart
 from itertools import groupby
 
 # Create your views here.
@@ -54,7 +55,8 @@ def create_pizza(request):
                     topping.image = topping_image
                     topping.save()
                 pizza.toppings.add(topping)
-
+                cart = Cart(request)
+                cart.add(pizza.id)
             context = {
                 'pizza': pizza,
                 'toppings_by_type': toppings_by_type,
