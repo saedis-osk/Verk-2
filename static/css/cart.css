@@ -43,6 +43,8 @@ div .pay{
     border-color:#FE8585;
 }
 
+
+
    @media (min-width: 1025px) {
             .h-custom {
             height: 100vh !important;
@@ -64,4 +66,12 @@ div .pay{
 
 #popupCheckout{
     width: 200px;
+}
+
+.my-link a{
+  color: white;
+}
+
+a {
+  color: black;
 }
