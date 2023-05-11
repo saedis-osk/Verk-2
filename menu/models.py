@@ -19,10 +19,11 @@ class Pizza(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length=10, null=True, blank=True)
+    toppings = models.ManyToManyField(Toppings)
     ingredient = models.CharField(max_length=255, blank=True)
-    toppings = models.ForeignKey(Toppings, on_delete=models.CASCADE, default=Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
+
 
     def __str__(self):
         return self.name
@@ -36,6 +37,15 @@ class Drink(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# class PizzaToppings(models.Model):
+#     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+#     topping = models.ForeignKey(Toppings, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.pizza
+
 
 class Offer(models.Model):
     name = models.CharField(max_length=255)

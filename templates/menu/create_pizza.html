@@ -11,7 +11,6 @@
             <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-
                 <h4>Base</h4>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary">
@@ -24,19 +23,21 @@
                         <input type="radio" name="options" id="option3" autocomplete="off"> Large
                     </label>
 
-        {% for type, toppings in toppings_by_type.items %}
+                {% for type, toppings in toppings_by_type.items %}
                 <h4>{{ type }}</h4>
                 {% for topping in toppings %}
                     <div class="topping">
                         <label class="myCheckbox">
                             <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
                             <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
+                            <div class="topping-details">
+                                <span class="topping-name">{{ topping.name }}</span>
+                                <span class="topping-price">{{ topping.price }}</span>
+                            </div>
                         </label>
-                        <span>{{ topping.name }}</span>
                     </div>
                 {% endfor %}
-            {% endfor %}
-
+                {% endfor %}
 
                 <h4>Drizzle on top?</h4>
 

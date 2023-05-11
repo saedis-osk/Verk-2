@@ -28,7 +28,6 @@ def get_pizza_by_id(request, id):
         'pizza': get_object_or_404(Pizza, pk=id)
     })
 
-
 def create_pizza(request):
     if request.method == 'POST':
         form = PizzaCreateForm(data=request.POST, files=request.FILES)
@@ -41,15 +40,13 @@ def create_pizza(request):
 
             toppings_ids = request.POST.getlist('toppings')
             toppings = Toppings.objects.filter(id__in=toppings_ids)
-            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             for topping in toppings:
-                print(topping)
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
                 if topping_image:
                     topping.image = topping_image
                     topping.save()
                 pizza.toppings.add(topping)
-
+            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
                 'toppings_by_type': toppings_by_type,
@@ -64,6 +61,41 @@ def create_pizza(request):
         'toppings_by_type': toppings_by_type,
     })
 
+
+# def create_pizza(request):
+#     if request.method == 'POST':
+#         form = PizzaCreateForm(data=request.POST, files=request.FILES)
+#         if form.is_valid():
+#             pizza = form.save(commit=False)
+#             pizza_image = request.FILES.get('image')
+#             if pizza_image:
+#                 pizza.image = pizza_image
+#             pizza.save()
+#
+#             toppings_ids = request.POST.getlist('toppings')
+#             toppings = Toppings.objects.filter(id__in=toppings_ids)
+#             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+#             for topping in toppings:
+#                 print(topping)
+#                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
+#                 if topping_image:
+#                     topping.image = topping_image
+#                     topping.save()
+#                 PizzaToppings.objects.create(pizza=pizza, topping=topping)  # Updated this line
+#
+#             context = {
+#                 'pizza': pizza,
+#                 'toppings_by_type': toppings_by_type,
+#             }
+#             return render(request, 'menu/create_pizza.html', context)
+#     else:
+#         form = PizzaCreateForm()
+#         toppings = Toppings.objects.all()
+#         toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+#     return render(request, 'menu/create_pizza.html', {
+#         'form': form,
+#         'toppings_by_type': toppings_by_type,
+#     })
 
 def delete_pizza(request, id):
     pizza = get_object_or_404(Pizza, pk=id)
