@@ -19,7 +19,6 @@ class Pizza(models.Model):
     description = models.CharField(max_length=255, blank=True)
     category = models.CharField(max_length=10, null=True, blank=True)
     ingredient = models.CharField(max_length=255, blank=True)
-    size = models.CharField(max_length=255, blank=True)
     toppings = models.ForeignKey(Toppings, on_delete=models.CASCADE, default=Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
@@ -31,7 +30,6 @@ class Pizza(models.Model):
 class Drink(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255, blank=True)
-    size = models.CharField(max_length=255, blank=True)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='drink/', default='drink/default.png')
 

@@ -12,7 +12,6 @@ class PizzaUpdateForm(ModelForm):
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'category': widgets.TextInput(attrs={'class': 'form-control'}),
             'ingredient': widgets.TextInput(attrs={'class': 'form-control'}),
-            'size': widgets.TextInput(attrs={'class': 'form-control'}),
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'})
         }
@@ -28,7 +27,6 @@ class PizzaCreateForm(ModelForm):
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
             'category': widgets.TextInput(attrs={'class': 'form-control'}),
             'ingredient': widgets.TextInput(attrs={'class': 'form-control'}),
-            'size': widgets.TextInput(attrs={'class': 'form-control'}),
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'})
@@ -42,7 +40,6 @@ class DrinkCreateForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'size': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'})
         }
 
@@ -54,6 +51,5 @@ class OfferCreateForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'size': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'})
         }

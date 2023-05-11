@@ -16,18 +16,3 @@ class Payment(models.Model):
 
 
 
-class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-    price = models.FloatField(default=0.0)
-    quantity = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f'{self.quantity} x {self.pizza.name} )'
-
-
-
-
-
