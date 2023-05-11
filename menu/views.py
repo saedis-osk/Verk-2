@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from menu.models import Pizza, Drink, Toppings
-from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm
+from menu.models import Pizza, Drink, Toppings, Offer
+from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 
 # Create your views here.
@@ -86,12 +86,30 @@ def update_pizza(request, id):
     })
 
 
-def offers(request):
-    return render(request, 'menu/offers.html')
 
 def drinks(request):
-    return render(request, 'menu/drinks.html')
+    if request.method == 'POST':
+        form = DrinkCreateForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            drink = form.save(commit=False)
+            drink_image = request.FILES.get('image')
+            if drink_image:
+                drink.image = drink_image
+            drink.save()
+    drinks = Drink.objects.all()
+    context = {'drinks': drinks}
+    return render(request, 'menu/drinks.html', context)
 
-
-
+def offers(request):
+    if request.method == 'POST':
+        form = OfferCreateForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            offer = form.save(commit=False)
+            offer_image = request.FILES.get('image')
+            if offer_image:
+                offer.image = offer_image
+            offer.save()
+    offers = Offer.objects.all()
+    context = {'offers': offers}
+    return render(request, 'menu/offers.html', context)
 

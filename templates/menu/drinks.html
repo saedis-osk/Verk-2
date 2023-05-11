@@ -21,9 +21,6 @@
                     </div>
 
 
-
-
-
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Sort:
@@ -38,11 +35,13 @@
 </form>
 
 
+
 <section class="py-5 bg-transparent">
+
 
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                    {% for drinks in drink.all %}
+                    {% for drink in drinks.all %}
 
                      <div class="col mb-5">
 
@@ -66,6 +65,7 @@
 
                     </div>
 
+
       </div>
 {% endfor %}
     </section>
@@ -80,5 +80,11 @@
 
 
 
+                </div>
+
+            </div>
+
+         </section>
+
 {% include 'footer.html' %}
-{%endblock %}
+{% endblock %}

@@ -5,9 +5,6 @@ from . import views
 from .views import drinks
 from .views import offers
 
-# from .views import toppings_view
-
-
 
 urlpatterns = [
     path('menus/', views.index, name="menu-index"),
@@ -15,6 +12,7 @@ urlpatterns = [
     path('create_pizza', views.create_pizza, name="create_pizza"),
     path('delete_pizza/<int:id>', views.delete_pizza, name="delete_pizza"),
     path('update_pizza/<int:id>', views.update_pizza, name="update_pizza"),
+
 
 #    path('toppings/', toppings_view, name='toppings'),
     path('drinks/', views.drinks, name='drinks'),
@@ -24,9 +22,8 @@ urlpatterns = [
 
     #path('menu', views.menu, name="menu"),
 
-]
 
-# path('toppings/', toppings_view, name='toppings'),
-# path('drinks/', drinks_view, name='drinks'),
-# path('offers/', offers_view, name='offers')
+    path('drinks', views.drinks, name='drinks'),
+    path('offers', views.offers, name='offers'),
+]
 
