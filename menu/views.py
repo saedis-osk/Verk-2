@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from menu.models import Pizza, Drink, Toppings, Offer
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
-
+from cart.cart import Cart
 # Create your views here.
 
 
@@ -33,6 +33,9 @@ def create_pizza(request):
 
     if request.method == 'POST':
         form = PizzaCreateForm(data=request.POST, files=request.FILES)
+        print(request.POST)
+        print(form.is_valid())
+        print(form.errors)
         if form.is_valid():
             pizza = form.save(commit=False)
             pizza_image = request.FILES.get('image')
@@ -48,13 +51,15 @@ def create_pizza(request):
                     topping.image = topping_image
                     topping.save()
                 pizza.toppings.add(topping)
-                cart = Cart(request)
-                cart.add(pizza.id)
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
                 'toppings_by_type': toppings_by_type,
             }
+            cart = Cart(request)
+            cart.add(pizza.id)
+            cart.save()
+            print(cart.cart)
             return render(request, 'menu/create_pizza.html', context)
     else:
         form = PizzaCreateForm()
