@@ -2,7 +2,21 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
-<h4>Your order was successful! </h4>
+
+<h5 class="cont"><a href="{% url 'checkout' %}" class="text-body"><i class="continue-shopping"></i>Back</a></h5>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{% static 'js/cart.js' %}"></script> <!-- Include the path to the confirmButton plugin file -->
+
+<button type="button" class="first btn btn-primary" onclick="alert('confirmed');">clickme</button>
+
+<script>
+$(() => {
+    $('button.first').confirmButton({
+        confirm: "Are you really sure?"
+    });
+});
+</script>
 
 {% endblock %}
 

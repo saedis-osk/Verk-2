@@ -1,82 +1,84 @@
- <button class=" btn btn-secondary mb-2">
-    <h7> <a href="{% url 'cart-index' %}">Back</a></h7>
-</button>
+ {% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
+
+
+ <div class="card-container">
+
+<h5 class="cont"><a href="{% url 'cart-index' %}" class="text-body"><i
+                     class="continue-shopping" ></i>Back</a></h5>
 </div>
 
 
 
-                <div class="card-container">
- <div class="card-1">
-    <label class="myCheckbox">
-      <input type="checkbox" class="myCheckbox" style="display: none;">
-      <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
-  <label class="form-check-label" for="inlineRadio2">Pay with card</label>
-</div>
-    </label>
-  </div>
 
 
- <div class="card-2">
-    <label class="myCheckbox">
-      <input type="checkbox" class="myCheckbox" style="display: none;">
-      <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">Pay on arrival</label>
-</div>
-    </label>
-  </div>
-</div>
 
-<div class="d-flex">
 
-              <div class="col-lg-5" id="popupCardWindow">
+
+                <div class="col-lg-5">
 
                 <div class="card bg-primary text-white rounded-3">
                   <div class="card-body pay">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
+                      <h5 class="mb-0">Information</h5>
                     </div>
 
                     <form class="mt-4">
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
+                        <input type="text" class="form-control form-control-lg" id="typeName"
+                          placeholder="candy@pizza.is" />
+                        <label class="form-label" for="typeName">Email </label>
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText1" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
+                        <input type="text" class="form-control form-control-lg" siez="17" id="typeText"
+                          placeholder="+354 1234 567" minlength="7" maxlength="20" />
+                        <label class="form-label" for="typeText">phone number</label>
                       </div>
 
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">CVC</label>
-                          </div>
-                        </div>
+                        <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17" id="typeText1"
+                          placeholder="Reykjavík" minlength="5" maxlength="30" />
+                        <label class="form-label" for="typeText">City</label>
+                      </div>
+
+                        <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17" id="typeText2"
+                          placeholder="101" minlength="3" maxlength="3" />
+                        <label class="form-label" for="typeText">zip code</label>
+                      </div>
+
+                         <div class="form-outline form-white mb-4">
+                        <input type="text" class="form-control form-control-lg" siez="17" id="typeText3"
+                          placeholder="Gervigata 4" minlength="5" maxlength="50" />
+                        <label class="form-label" for="typeText">Street name and number</label>
                       </div>
 
                     </form>
 
-                    <hr class="my-4">
 
-                    <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total</p>
-                      <p class="mb-2">...kr</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+                      <button class=" btn btn-secondary mb-2">
+    <h7> <a href="{% url 'checkout' %}">Confirm information and go to checkout</a></h7>
+</button>
+</div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/cart.js' %}"></script>
+
+{% endblock %}
+
+
+
 
