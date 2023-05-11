@@ -5,7 +5,8 @@ from home.forms.forms import OfferPopularCreateForm
 # def index(request):
 #     return render(request, 'home/index.html')
 
-def popular_offers(request):
+# def popular_offers(request):
+def index(request):
     if request.method == 'POST':
         form = OfferPopularCreateForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -17,4 +18,3 @@ def popular_offers(request):
     offers = PopularOffer.objects.all()
     context = {'offers': offers}
     return render(request, 'home/index.html', context)
-
