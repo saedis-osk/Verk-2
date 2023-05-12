@@ -55,7 +55,7 @@ def information(request):
 @login_required()
 def successful(request):
     return render(request, 'cart/successful.html')
-@login_required()
+
 def clear_cart(request):
     cart = Cart(request)
     cart.clear()  # Clear the session cart
