@@ -18,9 +18,18 @@ def index(request):
         } for x in Pizza.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': pizza})
 
-    context = {'pizza': Pizza.objects.all().order_by('name')}
-    return render(request, 'menu/index.html', context)
+    # Retrieve all pizzas and order by name
+    pizzas = Pizza.objects.all().order_by('name')
 
+    # Retrieve all unique categories
+    categories = Pizza.objects.values_list('category', flat=True).distinct()
+
+    # Create a list of tuples for categories
+    categories = [(category, category) for category in categories]
+
+    context = {'pizzas': pizzas, 'categories': categories}
+
+    return render(request, 'menu/index.html', context)
 
 
 def get_pizza_by_id(request, id):
