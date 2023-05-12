@@ -3,10 +3,16 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
 
-<div class="card-body p-4">
+
+ <div class="card-container">
 
 <h5 class="cont"><a href="{% url 'cart-index' %}" class="text-body"><i
                      class="continue-shopping" ></i>Back</a></h5>
+</div>
+
+
+
+
 
 
 
@@ -19,7 +25,7 @@
                       <h5 class="mb-0">Information</h5>
                     </div>
 
-                    <form id="myform" class="mt-4">
+                    <form class="mt-4">
                       <div class="form-outline form-white mb-4">
                         <input type="text" class="form-control form-control-lg" id="typeName"
                           placeholder="candy@pizza.is" />
@@ -58,7 +64,7 @@
     <h7> <a href="{% url 'checkout' %}">Confirm information and go to checkout</a></h7>
 </button>
 </div>
-</div>
+
 
             </div>
 
