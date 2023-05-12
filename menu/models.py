@@ -2,7 +2,6 @@ from django.db import models
 from cart.models import Item
 
 
-
 # Create your models here.
 
 class Toppings(models.Model):
@@ -16,17 +15,31 @@ class Toppings(models.Model):
         return self.name
 
 
+
 class Pizza(models.Model):
+    FRUITY = 'Fruity'
+    VEGAN = 'Vegan'
+    POPULAR = 'Popular'
+
+    CATEGORY_CHOICES = [
+        (FRUITY, 'Fruity'),
+        (VEGAN, 'Vegan'),
+        (POPULAR, 'Popular'),
+    ]
+
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=999, blank=True)
-    category = models.CharField(max_length=10, null=True, blank=True)
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, null=True, blank=True)
     toppings = models.ManyToManyField(Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
 
+    class Meta:
+        ordering = ['category']
 
     def __str__(self):
         return self.name
+
 
 
 class Drink(models.Model):

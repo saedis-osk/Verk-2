@@ -77,6 +77,31 @@ function addToCart() {
         }
     });
 }
+function filterByCategory(category) {
+  const productCards = document.querySelectorAll('.col.mb-5');
+
+  productCards.forEach((productCard) => {
+    const productCategory = productCard.getAttribute('data-category').toLowerCase();
+
+    if (category === '' || productCategory === category.toLowerCase()) {
+      productCard.style.display = 'block';
+    } else {
+      productCard.style.display = 'none';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const categorySelect = document.querySelector('#category-select');
+
+  if (categorySelect) {
+    categorySelect.addEventListener('change', (event) => {
+      filterByCategory(event.target.value);
+    });
+  } else {
+    console.error('Category select not found');
+  }
+});
 
 
 
