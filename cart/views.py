@@ -10,7 +10,7 @@ from creditcards import types
 def index(request):
     cart = Cart(request)
     context = {
-        "cart":cart.cart
+        "cart": cart.cart
     }
     print(cart.cart)
     return render(request, 'cart/index.html', context)

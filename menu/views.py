@@ -4,6 +4,7 @@ from menu.models import Pizza, Drink, Toppings, Offer
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 from cart.cart import Cart
+from cart.forms.forms import CartAddForm
 # Create your views here.
 
 
@@ -63,6 +64,45 @@ def create_pizza(request):
             return render(request, 'menu/create_pizza.html', context)
     else:
         form = PizzaCreateForm()
+        toppings = Toppings.objects.all()
+        toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+
+    return render(request, 'menu/create_pizza.html', {
+        'form': form,
+        'toppings_by_type': toppings_by_type,
+    })
+
+def add_pizza(request):
+    toppings_by_type = {}  # Initialize toppings_by_type here
+
+    if request.method == 'POST':
+        form = CartAddForm(data=request.POST, files=request.FILES)
+        print(request.POST)
+        print(form.is_valid())
+        print(form.errors)
+        if form.is_valid():
+            pizza = form.save(commit=False)
+            pizza.save()
+            toppings_ids = request.POST.getlist('toppings')
+            toppings = Toppings.objects.filter(id__in=toppings_ids)
+            for topping in toppings:
+                topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
+                if topping_image:
+                    topping.image = topping_image
+                    topping.save()
+                pizza.toppings.add(topping)
+            toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+            context = {
+                'pizza': pizza,
+                'toppings_by_type': toppings_by_type,
+            }
+            cart = Cart(request)
+            cart.add(pizza.id)
+            cart.save()
+            print(cart.cart)
+            return render(request, 'menu/create_pizza.html', context)
+    else:
+        form = CartAddForm()
         toppings = Toppings.objects.all()
         toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
 

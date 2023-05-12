@@ -1,3 +1,5 @@
+from cart.cart import Cart
+
 
 def cart_total_amount(request):
 	if request.user.is_authenticated:
