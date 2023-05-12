@@ -24,47 +24,45 @@
 
 
     </section>
+        <!--  dropdown sort -->
+            <select id="category-select">
+                <option value="">All Categories</option>
+                {% for category_id, category_name in categories %}
+                    <option value="{{ category_id }}">{{ category_name }}</option>
+                {% endfor %}
+            </select>
 
-<!-- Pizzas:-->
-<section class="py-5 bg-transparent">
-  <div class="container px-4 px-lg-5 mt-5">
-    <h2 class="fw-bolder mb-4">Pizzas</h2>
-    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-      {% for pizza in pizza.all %}
-      <div class="col mb-5">
-        <div class="card h-100" data-pizza-id="1">
-          <!-- Product image-->
-          <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}" />
-          <!-- Product details-->
-          <div class="card-body p-4">
-            <div class="text-center">
-              <!-- Product name-->
-              <h5 class="fw-bolder">{{ pizza.name }}</h5>
-              <!-- Product price-->
-              {{ pizza.price }}kr
+  <!-- Pizzas:-->
+    <section class="py-5 bg-transparent">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4">Pizzas</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {% for pizza in pizzas %}
+                <div class="col mb-5" data-category="{{ pizza.category }}">
+                    <div class="card h-100" data-pizza-id="1">
+                        <!-- Product image-->
+                        <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}" />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ pizza.name }}</h5>
+                                <!-- Product price-->
+                                {{ pizza.price }}kr
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center btn btn-outline-dark mt-auto">
+                                <a class="pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-          </div>
-          <!-- Product actions-->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center btn btn-outline-dark mt-auto">
-              <a class="pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}">View</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+        </div
 </section>
-
-
-
-
-
-
 <script src="{% static 'js/menu.js' %}"></script>
-
-
-
     {% include 'footer.html' %}
 {%endblock %}

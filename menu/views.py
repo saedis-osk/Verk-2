@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from menu.models import Pizza, Drink, Toppings, Offer
+from menu.models import Pizza, Drink, Toppings, Offer, Category
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 from cart.cart import Cart
@@ -19,7 +19,14 @@ def index(request):
         } for x in Pizza.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': pizza})
 
-    context = {'pizza': Pizza.objects.all().order_by('name')}
+    # Retrieve all pizzas and order by name
+    pizzas = Pizza.objects.all().order_by('name')
+
+    # Retrieve all unique categories
+    categories = Category.objects.all().values_list('id', 'name')
+
+    context = {'pizzas': pizzas, 'categories': categories}
+
     return render(request, 'menu/index.html', context)
 
 
@@ -28,6 +35,7 @@ def get_pizza_by_id(request, id):
     return render(request, 'menu/pizza_details.html', {
         'pizza': get_object_or_404(Pizza, pk=id)
     })
+
 
 def create_pizza(request):
     toppings_by_type = {}  # Initialize toppings_by_type here
@@ -45,13 +53,22 @@ def create_pizza(request):
             pizza.save()
 
             toppings_ids = request.POST.getlist('toppings')
-            toppings = Toppings.objects.filter(id__in=toppings_ids)
+            toppings = Toppings.objects.filter(id__in=toppings_ids).order_by('type')
             for topping in toppings:
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
                 if topping_image:
                     topping.image = topping_image
                     topping.save()
                 pizza.toppings.add(topping)
+
+            # Adding categories to pizza
+            categories_names = request.POST.getlist('categories')
+            categories = Category.objects.filter(name__in=categories_names)
+            for category in categories:
+                pizza.categories.add(category)
+
+            pizza.save()  # Save pizza after adding categories
+
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
