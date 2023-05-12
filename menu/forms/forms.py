@@ -21,7 +21,7 @@ class PizzaCreateForm(ModelForm):
     image = forms.CharField(required=False,widget=forms.TextInput( attrs={'class': 'form-control'}))
     class Meta:
         model = Pizza
-        exclude = ['id','name','price','toppings']
+        exclude = ['id', 'name', 'price', 'toppings']
         widgets = {
             #'name': widgets.TextInput(attrs={'class': 'form-control'}),
             #'description': widgets.TextInput(attrs={'class': 'form-control'}),

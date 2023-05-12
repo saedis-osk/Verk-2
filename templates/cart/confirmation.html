@@ -2,7 +2,16 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
-<h4>Your order was successful! </h4>
+
+<h5 class="cont"><a href="{% url 'checkout' %}" class="text-body"><i class="continue-shopping"></i>Back</a></h5>
+
+
+
+<button class="btn btn-primary"onclick="alert('confirmed');">
+  <a href="{% url 'successful' %}">confirm</a>
+</button>
+
+
 
 {% endblock %}
 

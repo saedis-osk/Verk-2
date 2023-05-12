@@ -37,15 +37,17 @@
 
 
 <section class="py-5 bg-transparent">
+    <h2 class="fw-bolder mb-4">Drinks</h2>
+
+ {% for drink in drinks.all %}
 
 
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="d-inline-block row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                    {% for drink in drinks.all %}
 
                      <div class="col mb-5">
 
-                        <div class="card h-100">
+                        <div class="card text-center" style="width: 18rem;">
                             <!-- Product image-->
                             <img class="card-img-top" src="{{ drink.image.url }}" alt="..." />
                             <!-- Product details-->
@@ -78,13 +80,6 @@
 
 
 
-
-
-                </div>
-
-            </div>
-
-         </section>
 
 {% include 'footer.html' %}
 {% endblock %}

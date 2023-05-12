@@ -40,3 +40,11 @@ def confirmation(request):
 
 def checkout(request):
     return render(request, 'cart/checkout.html')
+
+
+def information(request):
+    return render(request, 'cart/information.html')
+
+def successful(request):
+    return render(request, 'cart/successful.html')
+
