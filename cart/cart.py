@@ -43,3 +43,7 @@ class Cart(object):
         if item_id in self.cart:
             del self.cart[item_id]
             self.save()
+
+    def clear(self):
+        self.session[settings.CART_ID] = {}  # Clear the session cart
+        self.session.modified = True  # Mark the session as modified

@@ -13,6 +13,6 @@ class CartAddForm(ModelForm):
             #'description': widgets.TextInput(attrs={'class': 'form-control'}),
             #'category': widgets.TextInput(attrs={'class': 'form-control'}),
             #'ingredient': widgets.TextInput(attrs={'class': 'form-control'}),
-            'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
+            #'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
         }

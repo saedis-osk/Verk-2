@@ -42,9 +42,9 @@ def create_pizza(request):
 
     if request.method == 'POST':
         form = PizzaCreateForm(data=request.POST, files=request.FILES)
-        print(request.POST)
-        print(form.is_valid())
-        print(form.errors)
+        #print(request.POST)
+        #print(form.is_valid())
+        #print(form.errors)
         if form.is_valid():
             pizza = form.save(commit=False)
             pizza_image = request.FILES.get('image')
@@ -67,17 +67,11 @@ def create_pizza(request):
             for category in categories:
                 pizza.categories.add(category)
 
-            pizza.save()  # Save pizza after adding categories
-
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
                 'toppings_by_type': toppings_by_type,
             }
-            cart = Cart(request)
-            cart.add(pizza.id)
-            cart.save()
-            print(cart.cart)
             return render(request, 'menu/create_pizza.html', context)
     else:
         form = PizzaCreateForm()
@@ -89,35 +83,47 @@ def create_pizza(request):
         'toppings_by_type': toppings_by_type,
     })
 
+
 def add_pizza(request):
     toppings_by_type = {}  # Initialize toppings_by_type here
+    pizza_name = ""  # Initialize pizza_name variable
+    pizza_description = ""  # Initialize pizza_description variable
 
     if request.method == 'POST':
         form = CartAddForm(data=request.POST, files=request.FILES)
-        print(request.POST)
         print(form.is_valid())
-        print(form.errors)
         if form.is_valid():
             pizza = form.save(commit=False)
-            pizza.save()
             toppings_ids = request.POST.getlist('toppings')
             toppings = Toppings.objects.filter(id__in=toppings_ids)
             for topping in toppings:
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
                 if topping_image:
                     topping.image = topping_image
-                    topping.save()
-                pizza.toppings.add(topping)
+                else:
+                    topping.image = None# 404 needed here
+
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
-                'pizza': pizza,
+                'selected_pizza': {
+                    'name': pizza.name,
+                    'description': pizza.description,
+                    'price': pizza.price
+                },
                 'toppings_by_type': toppings_by_type,
             }
+
+            # Add the pizza details to the session cart
             cart = Cart(request)
-            cart.add(pizza.id)
+            cart.add(context)
             cart.save()
-            print(cart.cart)
-            return render(request, 'menu/create_pizza.html', context)
+            print("ADDED TO CART")
+            print(f"Context selected : {context}")
+
+            # Assign the pizza name and description to the variables
+
+
+            return redirect('cart-index')  # Redirect to the cart page
     else:
         form = CartAddForm()
         toppings = Toppings.objects.all()
@@ -126,7 +132,12 @@ def add_pizza(request):
     return render(request, 'menu/create_pizza.html', {
         'form': form,
         'toppings_by_type': toppings_by_type,
+        'pizza_name': pizza_name,
+        'pizza_description': pizza_description,  # Pass the pizza description to the template
     })
+
+
+
 
 def delete_pizza(request, id):
     pizza = get_object_or_404(Pizza, pk=id)

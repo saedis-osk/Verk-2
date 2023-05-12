@@ -48,3 +48,8 @@ def information(request):
 def successful(request):
     return render(request, 'cart/successful.html')
 
+def clear_cart(request):
+    cart = Cart(request)
+    cart.clear()  # Clear the session cart
+    return redirect('cart-index')  # Redirect to the cart page
+
