@@ -91,8 +91,6 @@ function filterByCategory(category) {
     });
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const categorySelect = document.querySelector('#category-select');
 

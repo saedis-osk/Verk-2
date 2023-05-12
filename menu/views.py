@@ -119,7 +119,30 @@ def update_pizza(request, id):
 
 
 
+from django.http import JsonResponse
+from django.shortcuts import render
+
 def drinks(request):
+    drinks = Drink.objects.all()
+
+    sort_order = request.GET.get('sort')
+    if sort_order == 'price':
+        drinks = drinks.order_by('price')
+    elif sort_order == 'alpha' or sort_order is None:
+        drinks = drinks.order_by('name')
+
+    if 'search_filter' in request.GET or sort_order:
+        drink_data = []
+        for drink in drinks:
+            first_image = drink.image.url if drink.image else None
+            drink_data.append({
+                'id': drink.id,
+                'name': drink.name,
+                'description': drink.description,
+                'firstImage': first_image,
+            })
+        return render(request, 'menu/drinks.html', {'drinks': drinks})
+
     if request.method == 'POST':
         form = DrinkCreateForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -128,9 +151,9 @@ def drinks(request):
             if drink_image:
                 drink.image = drink_image
             drink.save()
-    drinks = Drink.objects.all()
     context = {'drinks': drinks}
     return render(request, 'menu/drinks.html', context)
+
 
 def offers(request):
     if request.method == 'POST':
