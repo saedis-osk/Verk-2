@@ -78,30 +78,51 @@ function addToCart() {
     });
 }
 function filterByCategory(category) {
-  const productCards = document.querySelectorAll('.col.mb-5');
+    const productCards = document.querySelectorAll('.col.mb-5');
 
-  productCards.forEach((productCard) => {
-    const productCategory = productCard.getAttribute('data-category').toLowerCase();
+    productCards.forEach((productCard) => {
+        const productCategories = productCard.getAttribute('data-category').split(' ');
 
-    if (category === '' || productCategory === category.toLowerCase()) {
-      productCard.style.display = 'block';
-    } else {
-      productCard.style.display = 'none';
-    }
-  });
+        if (category === '' || productCategories.includes(String(category))) {
+            productCard.style.display = 'block';
+        } else {
+            productCard.style.display = 'none';
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const categorySelect = document.querySelector('#category-select');
+    const categorySelect = document.querySelector('#category-select');
 
-  if (categorySelect) {
-    categorySelect.addEventListener('change', (event) => {
-      filterByCategory(event.target.value);
-    });
-  } else {
-    console.error('Category select not found');
-  }
+    if (categorySelect) {
+        categorySelect.addEventListener('change', (event) => {
+            filterByCategory(event.target.value);
+        });
+    } else {
+        console.error('Category select not found');
+    }
 });
 
 
+function sortProducts(order) {
+    const productContainer = document.querySelector('.row-cols-2');
+    const productCards = Array.from(document.querySelectorAll('.col.mb-5'));
 
+    // Sort based on the selected order
+    if (order === 'price') {
+        productCards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
+    } else if (order === 'alpha') {
+        productCards.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
+    }
+
+    // Clear the container
+    productContainer.innerHTML = '';
+
+    // Append the sorted cards
+    productCards.forEach((productCard) => {
+        productContainer.appendChild(productCard);
+    });
+}
+document.querySelector('#sort-order').addEventListener('change', function() {
+    sortProducts(this.value);
+});

@@ -8,27 +8,35 @@ from cart.forms.forms import CartAddForm
 # Create your views here.
 
 
+
 def index(request):
-    if 'search_filter' in request.GET:
-        search_filter = request.GET['search_filter']
-        pizza = [{
+    pizzas = Pizza.objects.all()
+
+    sort_order = request.GET.get('sort')
+    if sort_order == 'price':
+        pizzas = pizzas.order_by('price')
+    elif sort_order == 'alpha' or sort_order is None:
+        pizzas = pizzas.order_by('name')
+
+    if 'search_filter' in request.GET or sort_order:
+        pizza_data = [{
             'id': x.id,
             'name': x.name,
             'description': x.description,
-            'firstImage': x.pizzaimage_set.first().image
-        } for x in Pizza.objects.filter(name__icontains=search_filter)]
-        return JsonResponse({'data': pizza})
+            'firstImage': x.pizzaimage_set.first().image if x.pizzaimage_set.first() else None
+        } for x in pizzas]
+        return JsonResponse({'data': pizza_data})
 
-    # Retrieve all pizzas and order by name
-    pizzas = Pizza.objects.all().order_by('name')
-
-    # Retrieve all unique categories
     categories = Category.objects.all().values_list('id', 'name')
 
-    context = {'pizzas': pizzas, 'categories': categories}
+    # Retrieve the selected category filter
+    category_filter = request.GET.get('category')
+    if category_filter:
+        pizzas = pizzas.filter(categories__id=int(category_filter))
+
+    context = {'pizzas': pizzas, 'categories': categories, 'category_filter': category_filter}
 
     return render(request, 'menu/index.html', context)
-
 
 
 def get_pizza_by_id(request, id):
@@ -161,7 +169,30 @@ def update_pizza(request, id):
 
 
 
+from django.http import JsonResponse
+from django.shortcuts import render
+
 def drinks(request):
+    drinks = Drink.objects.all()
+
+    sort_order = request.GET.get('sort')
+    if sort_order == 'price':
+        drinks = drinks.order_by('price')
+    elif sort_order == 'alpha' or sort_order is None:
+        drinks = drinks.order_by('name')
+
+    if 'search_filter' in request.GET or sort_order:
+        drink_data = []
+        for drink in drinks:
+            first_image = drink.image.url if drink.image else None
+            drink_data.append({
+                'id': drink.id,
+                'name': drink.name,
+                'description': drink.description,
+                'firstImage': first_image,
+            })
+        return render(request, 'menu/drinks.html', {'drinks': drinks})
+
     if request.method == 'POST':
         form = DrinkCreateForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -170,9 +201,20 @@ def drinks(request):
             if drink_image:
                 drink.image = drink_image
             drink.save()
-    drinks = Drink.objects.all()
     context = {'drinks': drinks}
     return render(request, 'menu/drinks.html', context)
+
+
+
+# def get_pizza_by_id(request, id):
+#     return render(request, 'menu/pizza_details.html', {
+#         'pizza': get_object_or_404(Pizza, pk=id)
+#     })
+def drink_detail(request, drink_id):
+    drink = get_object_or_404(Drink, id=drink_id)
+    return render(request, 'menus/drink_detail.html', {'drink': drink})
+
+
 
 def offers(request):
     if request.method == 'POST':
