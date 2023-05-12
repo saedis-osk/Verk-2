@@ -5,28 +5,19 @@
     <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
     <div class="card">
         <div class="card-body p-4">
-            <h3 class="selected-pizza">Name of selected pizza JS</h3>
-            <h5 class="selected-pizza">Description of the pizza</h5>
+            <h3 class="selected-pizza">Create your own pizza</h3>
+            
+
+            <div class="d-inline-block justify-content-center">
 
             <form class="form form-horizontal" action="{% url 'create_pizza'%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                <h4>Base</h4>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Small
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Medium
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option3" autocomplete="off"> Large
-                    </label>
 
                 {% for type, toppings in toppings_by_type.items %}
                 <h4>{{ type }}</h4>
                 {% for topping in toppings %}
-                    <div class="topping">
+                    <div class="topping d-inline-block mb-3 g-1">
                         <label class="myCheckbox">
                             <img src="{{ topping.image.url }}" class="checked" alt="{{ topping.name }}">
                             <input type="checkbox" class="myCheckbox" style="display: none;" name="toppings" value="{{ topping.id }}">
@@ -39,7 +30,6 @@
                 {% endfor %}
                 {% endfor %}
 
-                <h4>Drizzle on top?</h4>
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a class="btn btn-primary me-md-2 " href="{% url 'cart-index' %}">Add to cart</a>
