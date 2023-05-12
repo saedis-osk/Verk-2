@@ -7,3 +7,4 @@ from cart.models import Payment
 
 admin.site.register(Payment)
 
+admin.register(Item)

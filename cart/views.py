@@ -1,12 +1,19 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from menu.models import Pizza
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from .cart import Cart
+from django.template import RequestContext
 from django.contrib.auth.models import User
-from django.shortcuts import render
 from creditcards import types
 
-# Create your views here.
-
 def index(request):
-    return render(request, 'cart/index.html')
+    cart = Cart(request)
+    context = {
+        "cart":cart.cart
+    }
+    print(cart.cart)
+    return render(request, 'cart/index.html', context)
 
 
 def detect_card_type(request):
@@ -34,8 +41,10 @@ def confirmation(request):
 def checkout(request):
     return render(request, 'cart/checkout.html')
 
+
 def information(request):
     return render(request, 'cart/information.html')
 
 def successful(request):
     return render(request, 'cart/successful.html')
+

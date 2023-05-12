@@ -32,10 +32,17 @@ ALLOWED_HOSTS = []
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_AGE = 1209600
+
+CART_ID = "cart_id"
+
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
 )
 
+CART_SESSION_ID = 'cart'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INSTALLED_APPS = [
@@ -46,10 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'menu.apps.MenuConfig',
-    'cart.apps.CartConfig',
     'home.apps.HomeConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+    'cart.apps',
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,8 +76,7 @@ ROOT_URLCONF = 'pizza.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,8 +103,6 @@ DATABASES = {
         'PASSWORD': 'Abc.12345',
         'HOST': '34.88.199.104',
         'PORT': '5432',
-
-
     }
 }
 
@@ -134,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]

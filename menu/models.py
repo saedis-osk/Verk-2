@@ -1,4 +1,5 @@
 from django.db import models
+from cart.models import Item
 
 
 
@@ -17,7 +18,7 @@ class Toppings(models.Model):
 
 class Pizza(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=999, blank=True)
     category = models.CharField(max_length=10, null=True, blank=True)
     toppings = models.ManyToManyField(Toppings)
     ingredient = models.CharField(max_length=255, blank=True)
@@ -39,18 +40,12 @@ class Drink(models.Model):
         return self.name
 
 
-# class PizzaToppings(models.Model):
-#     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
-#     topping = models.ForeignKey(Toppings, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.pizza
-
 
 class Offer(models.Model):
     name = models.CharField(max_length=255)
-    price = models.FloatField()
+    price = models.FloatField(default=0.0)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE, null=True)
     description = models.CharField(max_length=255, blank=True)
     image = models.ImageField(upload_to='offer/', default='offer/default.png')
 
