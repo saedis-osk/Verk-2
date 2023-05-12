@@ -6,27 +6,32 @@ from itertools import groupby
 from cart.cart import Cart
 # Create your views here.
 
-# ja
+
 
 def index(request):
-    if 'search_filter' in request.GET:
-        search_filter = request.GET['search_filter']
-        pizza = [{
+    pizzas = Pizza.objects.all()
+
+    sort_order = request.GET.get('sort')
+    if sort_order == 'price':
+        pizzas = pizzas.order_by('price')
+    elif sort_order == 'alpha' or sort_order is None:
+        pizzas = pizzas.order_by('name')
+
+    if 'search_filter' in request.GET or sort_order:
+        pizza_data = [{
             'id': x.id,
             'name': x.name,
             'description': x.description,
-            'firstImage': x.pizzaimage_set.first().image
-        } for x in Pizza.objects.filter(name__icontains=search_filter)]
-        return JsonResponse({'data': pizza})
+            'firstImage': x.pizzaimage_set.first().image if x.pizzaimage_set.first() else None
+        } for x in pizzas]
+        return JsonResponse({'data': pizza_data})
 
-    pizzas = Pizza.objects.all().order_by('name')
     categories = Category.objects.all().values_list('id', 'name')
 
     # Retrieve the selected category filter
     category_filter = request.GET.get('category')
-
     if category_filter:
-        pizzas = pizzas.filter(categories__id=category_filter)
+        pizzas = pizzas.filter(categories__id=int(category_filter))
 
     context = {'pizzas': pizzas, 'categories': categories, 'category_filter': category_filter}
 

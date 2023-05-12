@@ -92,6 +92,7 @@ function filterByCategory(category) {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const categorySelect = document.querySelector('#category-select');
 
@@ -105,4 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function sortProducts(order) {
+    const productContainer = document.querySelector('.row-cols-2');
+    const productCards = Array.from(document.querySelectorAll('.col.mb-5'));
 
+    // Sort based on the selected order
+    if (order === 'price') {
+        productCards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
+    } else if (order === 'alpha') {
+        productCards.sort((a, b) => a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')));
+    }
+
+    // Clear the container
+    productContainer.innerHTML = '';
+
+    // Append the sorted cards
+    productCards.forEach((productCard) => {
+        productContainer.appendChild(productCard);
+    });
+}
+document.querySelector('#sort-order').addEventListener('change', function() {
+    sortProducts(this.value);
+});
