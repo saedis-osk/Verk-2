@@ -6,6 +6,7 @@ from itertools import groupby
 from cart.cart import Cart
 # Create your views here.
 
+# ja
 
 def index(request):
     if 'search_filter' in request.GET:
