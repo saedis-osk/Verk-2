@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from menu.models import Pizza, Drink, Toppings, Offer
+from menu.models import Pizza, Drink, Toppings, Offer, Category
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 from cart.cart import Cart
@@ -22,20 +22,19 @@ def index(request):
     pizzas = Pizza.objects.all().order_by('name')
 
     # Retrieve all unique categories
-    categories = Pizza.objects.values_list('category', flat=True).distinct()
-
-    # Create a list of tuples for categories
-    categories = [(category, category) for category in categories]
+    categories = Category.objects.all()  # Categories are separate model now
 
     context = {'pizzas': pizzas, 'categories': categories}
 
     return render(request, 'menu/index.html', context)
 
 
+
 def get_pizza_by_id(request, id):
     return render(request, 'menu/pizza_details.html', {
         'pizza': get_object_or_404(Pizza, pk=id)
     })
+
 
 def create_pizza(request):
     toppings_by_type = {}  # Initialize toppings_by_type here
@@ -60,6 +59,15 @@ def create_pizza(request):
                     topping.image = topping_image
                     topping.save()
                 pizza.toppings.add(topping)
+
+            # Adding categories to pizza
+            categories_names = request.POST.getlist('categories')
+            categories = Category.objects.filter(name__in=categories_names)
+            for category in categories:
+                pizza.categories.add(category)
+
+            pizza.save()  # Save pizza after adding categories
+
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
             context = {
                 'pizza': pizza,
@@ -79,6 +87,7 @@ def create_pizza(request):
         'form': form,
         'toppings_by_type': toppings_by_type,
     })
+
 
 def delete_pizza(request, id):
     pizza = get_object_or_404(Pizza, pk=id)

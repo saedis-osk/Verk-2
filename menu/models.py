@@ -16,7 +16,7 @@ class Toppings(models.Model):
 
 
 
-class Pizza(models.Model):
+class Category(models.Model):
     FRUITY = 'Fruity'
     VEGAN = 'Vegan'
     POPULAR = 'Popular'
@@ -27,18 +27,25 @@ class Pizza(models.Model):
         (POPULAR, 'Popular'),
     ]
 
+    name = models.CharField(max_length=10, choices=CATEGORY_CHOICES, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Pizza(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=999, blank=True)
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, null=True, blank=True)
+    categories = models.ManyToManyField(Category)
     toppings = models.ManyToManyField(Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')
 
     class Meta:
-        ordering = ['category']
+        ordering = ['name']
 
     def __str__(self):
         return self.name
+
 
 
 
