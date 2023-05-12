@@ -155,6 +155,17 @@ def drinks(request):
     return render(request, 'menu/drinks.html', context)
 
 
+
+# def get_pizza_by_id(request, id):
+#     return render(request, 'menu/pizza_details.html', {
+#         'pizza': get_object_or_404(Pizza, pk=id)
+#     })
+def drink_detail(request, drink_id):
+    drink = get_object_or_404(Drink, id=drink_id)
+    return render(request, 'menus/drink_detail.html', {'drink': drink})
+
+
+
 def offers(request):
     if request.method == 'POST':
         form = OfferCreateForm(data=request.POST, files=request.FILES)
