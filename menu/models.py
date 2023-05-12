@@ -35,7 +35,7 @@ class Category(models.Model):
 class Pizza(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=999, blank=True)
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category,blank=True)
     toppings = models.ManyToManyField(Toppings)
     price = models.FloatField(default=0.0)
     image = models.ImageField(upload_to='pizza/', default='/pizza/default.png')

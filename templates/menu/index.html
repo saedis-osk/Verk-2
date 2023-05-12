@@ -25,14 +25,12 @@
 
     </section>
         <!--  dropdown sort -->
-        <select id="category-select">
-            <option value="">All Categories</option>
-                {% for value, name in categories %}
-                    <option value="{{ value }}">{{ name }}</option>
+            <select id="category-select">
+                <option value="">All Categories</option>
+                {% for category_id, category_name in categories %}
+                    <option value="{{ category_id }}">{{ category_name }}</option>
                 {% endfor %}
             </select>
-            </div>
-            </section>
 
   <!-- Pizzas:-->
     <section class="py-5 bg-transparent">

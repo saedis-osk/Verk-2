@@ -22,7 +22,7 @@ def index(request):
     pizzas = Pizza.objects.all().order_by('name')
 
     # Retrieve all unique categories
-    categories = Category.objects.all()  # Categories are separate model now
+    categories = Category.objects.all().values_list('id', 'name')
 
     context = {'pizzas': pizzas, 'categories': categories}
 
@@ -52,7 +52,7 @@ def create_pizza(request):
             pizza.save()
 
             toppings_ids = request.POST.getlist('toppings')
-            toppings = Toppings.objects.filter(id__in=toppings_ids)
+            toppings = Toppings.objects.filter(id__in=toppings_ids).order_by('type')
             for topping in toppings:
                 topping_image = request.FILES.get('topping_image_{}'.format(topping.id))
                 if topping_image:
