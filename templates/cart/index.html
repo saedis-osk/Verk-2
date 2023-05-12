@@ -3,80 +3,66 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/cart.css' %}"/>
 
-<h2>Your Cart</h2>
-
-{% for item in cart %}
-  <div>
-    <h4></h4>
-      <p>Name: {{ item.name }}</p>
-    <p>Quantity: {{ item.quantity }}</p>
-    <p>Price: {{ item.price }}</p>
-      <p>{{item.toppings_by_type}}</p>
-  </div>
-{% empty %}
-  <p>Your cart is empty.</p>
-{% endfor %}
-
-<p>Total Amount: {{ total_amount }}</p>
-
-<a href="">Proceed to Checkout</a>
-<h2>Selected Pizza:</h2>
-{% if cart %}
-  <div>
-    <h4>{{ cart.selected_pizza.name }}</h4>
-    <p>Description: {{ cart.selected_pizza.description }}</p>
-    <p>Price: {{ cart.selected_pizza.price }}</p>
-      <p>toppings: {{cart.selected_pizza.toppings_by_type}}</p>
-  </div>
-{% else %}
-  <p>No pizza selected.</p>
-{% endif %}
     <section class="h-100 h-custom">
-    <h1>Payment</h1>
+    <h1>Cart</h1>
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row d-flex justify-content-center  h-100">
       <div class="col">
         <div class="card">
           <div class="card-body p-4">
 
             <div class="row">
 
-              <div class="col-lg-7">
-                <h5 class="cont"><a href="{% url 'menu-index' %}" class="text-body"><i
-                     class="continue-shopping" ></i>Continue shopping</a></h5>
-                <div class="card mb-3">
+              <div class="">
+                <h5 class="cont"><a href="{% url 'menu-index' %}" class="text-body"></a>
+
                   <div class="card-body">
                     <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
+                      <div class="">
                         <div>
-                          image
+
                           <!--image -->
                             <!--class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">-->
                         </div>
+                          {% for item_type in cart.values %}
+                            {% for item in item_type.values %}
+                          <h3>Name: {{ item.name }}</h3>
+                          <br>
+                          <h3>Quantity: {{ item.quantity }}</h3>
+                          <br>
+                          <h3>{{ item.price }}</h3>
+                            {%endfor%}
+                          {%endfor%}
+                          {% for item in cart.values %}
+                          {% for item in item_type.values %}
                         <div class="ms-3">
-                          <h5>Name of product</h5>
-                          <p class="small mb-0">Description of product</p>
+                          <p>Name: {{ item.name }}</p>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
                         <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">nr</h5>
+                          <p>Quantity: {{ item.quantity }}</p>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">price</h5>
+                          <p>Price: {{ item.price }}</p>
                         </div>
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
   <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
 </svg>
                         </a>
-                      </div>
+
+
+                    {% endfor %}
+                        {% empty %}
+                          <p>Your cart is empty.</p>
+                        {%endfor%}
                     </div>
                         <hr class="my-4">
 
                     <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total</p>
-                      <p class="mb-2">...kr</p>
+                      <p>Total Amount: {{ cart|get_total_price_of_cart }}</p>
+                      <p class="mb-2">kr</p>
                     </div>
 
                   </div>

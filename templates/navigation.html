@@ -43,7 +43,8 @@
         </li>
 
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.profile %}
+
         <li class="nav-item">
             <a class="profile_button" href="{% url 'profile' %}">
                 <img src="{{user.profile.profile_image.url}}" class="profile-image"/>

@@ -2,3 +2,19 @@
     color: #6D1A1A;
     text-align: center;
 }
+h2{
+    color: #6D1A1A;
+}
+
+h3{
+   color: #6D1A1A;
+}
+
+.homepageimage{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+

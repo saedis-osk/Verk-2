@@ -4,8 +4,7 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/menu.css' %}"/>
-
-    <section class="py-5 bg-transparent">
+    <section class="topbuttonsmenu">
         <div class="container px-4 px-lg-5 mt-5">
             <!-- search button and make my own pizza button-->
             <form id="search-form">
@@ -18,9 +17,10 @@
                 </form>
          </div>
 
-                <div class="d-grid mb-2">
+
+
                     <a class="btn btn-primary p-3 make-pizza-button" href="{% url 'create_pizza'%}">Make My Own Pizza</a>
-                </div>
+
 
         <select id="sort-order">
     <option value="">Sort by...</option>
@@ -28,7 +28,7 @@
     <option value="alpha">Alphabetical</option>
 </select>
 
-    </section>
+
         <!--  dropdown sort -->
         <select id="category-select">
             <option value="">All Categories</option>
@@ -36,6 +36,8 @@
                 <option value="{{ category_id }}" {% if category_id == category_filter %}selected{% endif %}>{{ category_name }}</option>
             {% endfor %}
         </select>
+        </section>
+
 
 <!-- Pizzas:-->
 <section class="py-5 bg-transparent">
@@ -66,7 +68,7 @@
 
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}">View</a>
+                                <a class="btn btn-outline-dark mt-auto pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}" data-pizza-id="{{ pizza.id }}">View</a>
                             </div>
                         </div>
                     </div>

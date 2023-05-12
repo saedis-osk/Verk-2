@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function selectPizza(event) {
   const pizzaName = event.currentTarget.getAttribute('data-pizza-name');
   const pizzaDescription = event.currentTarget.getAttribute('data-pizza-description');
-
+  const pizzaId = event.currentTarget.getAttribute('data-pizza-id');
   localStorage.setItem('selectedPizzaName', pizzaName);
-
-  window.location.href = '/menus/create_pizza';
+  localStorage.setItem('selectedPizzaId', pizzaId);
+  window.location.href = '/menus/create_pizza/' + pizzaId;
 }
 
 const selectButtons = document.getElementsByClassName('pizza-select-button');
@@ -49,34 +49,17 @@ for (let i = 0; i < selectButtons.length; i++) {
 
 function getSelectedPizza(event) {
   const selectedPizzaName = localStorage.getItem('selectedPizzaName');
+  const selectedPizzaId = localStorage.getItem('selectedPizzaId');
   const selectedPizzaElement = document.getElementById('selected-pizza');
+  selectedPizzaElement.textContent = selectedPizzaId;
   selectedPizzaElement.textContent = selectedPizzaName;
+  const form = document.getElementsByClassName("form");
+  console.log(form);
+  console.log(selectedPizzaId);
+  const x = form[0].action = selectedPizzaId;
 }
 
-function addToCart() {
-    // Prevent the default form submission behavior
-    event.preventDefault();
 
-    // Serialize the form data
-    const formData = $('#add-to-cart-form').serialize();
-
-    // Send an AJAX POST request to the server
-    $.ajax({
-        url: '{% url "add_to_cart" %}',
-        type: 'POST',
-        data: formData,
-        success: function(response) {
-            // Handle the successful response, if needed
-            // For example, display a success message or update the cart icon
-            console.log('Item added to cart successfully');
-        },
-        error: function(xhr, status, error) {
-            // Handle the error response, if needed
-            // For example, display an error message
-            console.error('Error adding item to cart:', error);
-        }
-    });
-}
 function filterByCategory(category) {
     const productCards = document.querySelectorAll('.col.mb-5');
 

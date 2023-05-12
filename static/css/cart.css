@@ -3,17 +3,14 @@ h1 {
     color:#6D1A1A;
 }
 
-section .h-custom {
-    position:fixed;
-    left:50%;
-    height: 100%;
-    margin:auto;
-}
-div .card .mb-3 {
+.card.mb-3 {
     background-color:#6D1A1A;
     color:white;
+    width: 100%;
 
-
+h3{
+    text-align: left;
+}
 }
 .btn.btn-info.btn-block.btn-lg{
     background-color: #FE8585;
@@ -28,10 +25,17 @@ div .card{
     background-color: mintcream;
     margin-bottom: 2em;
 }
+.col-lg-5{
+      margin: auto;
+  width: 50%;
+}
+
 
 div .pay{
     background-color: #6D1A1A;
     border-color: #6D1A1A;
+
+
 
 }
 
@@ -50,24 +54,6 @@ div .pay{
 
 
 
-   @media (min-width: 1025px) {
-            .h-custom {
-            height: 100vh !important;
-            }
-        }
-
-
-.card-1 {
-  margin-right: 10px;
-}
-
-.card-2 {
-  margin-left: 10px;
-}
-
-#popupCheckout{
-    width: 200px;
-}
 
 .my-link a{
   color: white;

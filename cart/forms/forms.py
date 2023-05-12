@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm, widgets
 from menu.models import Pizza
+from menu.models import Drink
 
 
 class CartAddForm(ModelForm):
@@ -16,3 +17,17 @@ class CartAddForm(ModelForm):
             #'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
         }
+
+class CartAddFormDrink(ModelForm):
+    image = forms.CharField(required=False,widget=forms.TextInput( attrs={'class': 'form-control'}))
+    class Meta:
+        model = Drink
+        exclude = ['id', 'price', 'name']
+        widgets = {
+            #'name': widgets.TextInput(attrs={'class': 'form-control'}),
+            #'description': widgets.TextInput(attrs={'class': 'form-control'}),
+            #'category': widgets.TextInput(attrs={'class': 'form-control'}),
+            #'ingredient': widgets.TextInput(attrs={'class': 'form-control'}),
+            #'toppings': widgets.TextInput(attrs={'class': 'form-control'}),
+            'price': widgets.NumberInput(attrs={'class': 'form-control'})
+}

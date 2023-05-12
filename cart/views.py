@@ -6,15 +6,23 @@ from .cart import Cart
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from creditcards import types
+from django.template.defaulttags import register
 
 def index(request):
     cart = Cart(request)
     context = {
         "cart": cart.cart
     }
-    print(cart.cart)
     return render(request, 'cart/index.html', context)
 
+@register.filter
+def get_total_price_of_cart(cart):
+    """Returns the total price in the cart """
+    total = 0
+    for cat in cart.values():
+        for item in cat.values():
+            total += int(item['price']) * int(item['quantity'])
+    return total
 
 def detect_card_type(request):
     if request.method == 'POST':
@@ -28,7 +36,7 @@ def detect_card_type(request):
         return render(request, 'card_type_form.html')
 
 
-
+@login_required()
 def profile_view(request, username):
     user = User.objects.get(username=username)
     return render(request, 'profile.html', {'user': user})
@@ -37,24 +45,22 @@ def profile_view(request, username):
 #def confirmation(request):
  #   return render(request, 'cart/confirmation.html')
 
-
+@login_required()
 def checkout(request):
     return render(request, 'cart/checkout.html')
 
-
+@login_required()
 def information(request):
     return render(request, 'cart/information.html')
-
+@login_required()
 def successful(request):
     return render(request, 'cart/successful.html')
-
+@login_required()
 def clear_cart(request):
     cart = Cart(request)
     cart.clear()  # Clear the session cart
     return redirect('cart-index')  # Redirect to the cart page
-
-
-
+@login_required()
 def confirmation_view(request):
     if request.method == 'POST':
         # Assuming you have retrieved the form data and processed it

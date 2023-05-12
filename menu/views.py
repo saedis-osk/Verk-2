@@ -1,10 +1,9 @@
-from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from menu.models import Pizza, Drink, Toppings, Offer, Category
 from menu.forms.forms import PizzaCreateForm, PizzaUpdateForm, DrinkCreateForm, OfferCreateForm
 from itertools import groupby
 from cart.cart import Cart
-from cart.forms.forms import CartAddForm
+from cart.forms.forms import CartAddForm, CartAddFormDrink
 # Create your views here.
 
 
@@ -69,7 +68,6 @@ def create_pizza(request):
                     topping.save()
                 pizza.toppings.add(topping)
 
-            # Adding categories to pizza
             categories_names = request.POST.getlist('categories')
             categories = Category.objects.filter(name__in=categories_names)
             for category in categories:
@@ -92,14 +90,12 @@ def create_pizza(request):
     })
 
 
-def add_pizza(request):
+def add_pizza(request,id):
     toppings_by_type = {}  # Initialize toppings_by_type here
     pizza_name = ""  # Initialize pizza_name variable
     pizza_description = ""  # Initialize pizza_description variable
-
     if request.method == 'POST':
         form = CartAddForm(data=request.POST, files=request.FILES)
-        print(form.is_valid())
         if form.is_valid():
             pizza = form.save(commit=False)
             toppings_ids = request.POST.getlist('toppings')
@@ -112,26 +108,27 @@ def add_pizza(request):
                     topping.image = None# 404 needed here
 
             toppings_by_type = {k: list(g) for k, g in groupby(toppings, lambda t: t.type)}
+            chosen_pizza = Pizza.objects.get(pk=id)
+
             context = {
                 'selected_pizza': {
-                    'name': pizza.name,
-                    'description': pizza.description,
-                    'price': pizza.price
+                    'item_type': 'pizza',
+                    'item_id': id,
+                    'name': chosen_pizza.name,
+                    'description': chosen_pizza.description,
+                    'price': chosen_pizza.price
                 },
                 'toppings_by_type': toppings_by_type,
             }
 
-            # Add the pizza details to the session cart
+
             cart = Cart(request)
-            cart.add(context)
-            cart.save()
+            cart.add(context['selected_pizza'])
+            cart.list()
             print("ADDED TO CART")
-            print(f"Context selected : {context}")
-
-            # Assign the pizza name and description to the variables
 
 
-            return redirect('cart-index')  # Redirect to the cart page
+            return redirect('cart-index')
     else:
         form = CartAddForm()
         toppings = Toppings.objects.all()
@@ -141,7 +138,7 @@ def add_pizza(request):
         'form': form,
         'toppings_by_type': toppings_by_type,
         'pizza_name': pizza_name,
-        'pizza_description': pizza_description,  # Pass the pizza description to the template
+        'pizza_description': pizza_description,
     })
 
 
@@ -205,16 +202,28 @@ def drinks(request):
     return render(request, 'menu/drinks.html', context)
 
 
-
-# def get_pizza_by_id(request, id):
-#     return render(request, 'menu/pizza_details.html', {
-#         'pizza': get_object_or_404(Pizza, pk=id)
-#     })
 def drink_detail(request, drink_id):
     drink = get_object_or_404(Drink, id=drink_id)
     return render(request, 'menus/drink_detail.html', {'drink': drink})
 
-
+def add_drink(request, id):
+    chosen_drink = Drink.objects.get(pk=id)
+    if not chosen_drink:
+        return redirect('drinks')
+    context = {
+        'selected_drink': {
+        'item_type': 'drink',
+        'item_id': id,
+        'name': chosen_drink.name,
+        'description': chosen_drink.description,
+        'price': chosen_drink.price
+        }
+    }
+    cart = Cart(request)
+    cart.add(context['selected_drink'])
+    cart.list()
+    print("ADDED TO CART")
+    return redirect('cart-index')
 
 def offers(request):
     if request.method == 'POST':

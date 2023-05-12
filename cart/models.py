@@ -12,11 +12,10 @@ Value verður how many
 '''
 class Item(models.Model): #PRODUCT ER PARENT AF PIZZA, DRINKS OG OFFERS
     quantity = models.IntegerField()
-
     class Meta:
         app_label = 'cart.item'
-# Create your models here.
 
+# Create your models here.
 class Payment(models.Model):
     cc_number = CardNumberField(_('card number'))
     cc_expiry = CardExpiryField(_('expiration date'))

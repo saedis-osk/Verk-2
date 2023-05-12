@@ -1,5 +1,4 @@
 from django.db import models
-from cart.models import Item
 
 
 # Create your models here.

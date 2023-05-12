@@ -3,17 +3,17 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/toppings.css' %}"/>
+    <script src="{% static 'js/menu.js' %}"></script>
 
     <div class="card">
         <div class="card-body p-4">
             <h3 class="selected-pizza" id="selected-pizza">{{ pizza_name }}</h3>
             <h4>{{ pizza_description }}</h4>
-            <script>getSelectedPizza();</script>
             <h4>{{pizza.name}}</h4>
 
             <div class="d-inline-block justify-content-center">
-
-            <form class="form form-horizontal" action="{% url 'add_pizza' %}" method="post" enctype="multipart/form-data">
+            <!--  action="/menus/create_pizza/" -->
+            <form class="form form-horizontal" action="{% url 'add_pizza' 0%}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
 
@@ -40,7 +40,7 @@
             </form>
         </div>
     </div>
-
+    </div>
     <script src="{% static 'js/toppings.js' %}"></script>
-
+    <script>getSelectedPizza();</script>
 {% endblock %}

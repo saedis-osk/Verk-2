@@ -14,7 +14,7 @@ from .views import confirmation_view
 urlpatterns = [
     path('', views.index, name="cart-index"),
 
-#    path('confirmation/', views.confirmation, name='confirmation'),
+    path('confirmation/', views.confirmation_view, name='confirmation'),
     path('successful/', views.successful, name='successful'),
     path('information/', views.information, name='information'),
     path('checkout/', views.checkout, name='checkout'),
