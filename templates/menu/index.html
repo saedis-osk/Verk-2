@@ -25,12 +25,12 @@
 
     </section>
         <!--  dropdown sort -->
-            <select id="category-select">
-                <option value="">All Categories</option>
-                {% for category_id, category_name in categories %}
-                    <option value="{{ category_id }}">{{ category_name }}</option>
-                {% endfor %}
-            </select>
+        <select id="category-select">
+            <option value="">All Categories</option>
+            {% for category_id, category_name in categories %}
+                <option value="{{ category_id }}" {% if category_id == category_filter %}selected{% endif %}>{{ category_name }}</option>
+            {% endfor %}
+        </select>
 
   <!-- Pizzas:-->
     <section class="py-5 bg-transparent">
@@ -38,7 +38,7 @@
             <h2 class="fw-bolder mb-4">Pizzas</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 {% for pizza in pizzas %}
-                <div class="col mb-5" data-category="{{ pizza.category }}">
+                <div class="col mb-5" data-category="{% for category in pizza.categories.all %}{{ category.id }} {% endfor %}">
                     <div class="card h-100" data-pizza-id="1">
                         <!-- Product image-->
                         <img class="card-img-top" src="{{ pizza.image.url }}" alt="{{ pizza.name }}" />

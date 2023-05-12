@@ -18,16 +18,18 @@ def index(request):
         } for x in Pizza.objects.filter(name__icontains=search_filter)]
         return JsonResponse({'data': pizza})
 
-    # Retrieve all pizzas and order by name
     pizzas = Pizza.objects.all().order_by('name')
-
-    # Retrieve all unique categories
     categories = Category.objects.all().values_list('id', 'name')
 
-    context = {'pizzas': pizzas, 'categories': categories}
+    # Retrieve the selected category filter
+    category_filter = request.GET.get('category')
+
+    if category_filter:
+        pizzas = pizzas.filter(categories__id=category_filter)
+
+    context = {'pizzas': pizzas, 'categories': categories, 'category_filter': category_filter}
 
     return render(request, 'menu/index.html', context)
-
 
 
 def get_pizza_by_id(request, id):
