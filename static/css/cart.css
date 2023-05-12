@@ -12,6 +12,8 @@ section .h-custom {
 div .card .mb-3 {
     background-color:#6D1A1A;
     color:white;
+
+
 }
 .btn.btn-info.btn-block.btn-lg{
     background-color: #FE8585;
@@ -29,7 +31,10 @@ div .card{
 
 div .pay{
     background-color: #6D1A1A;
+    border-color: #6D1A1A;
+
 }
+
 
 .btn-secondary{
     background-color: #FE8585;
@@ -51,10 +56,6 @@ div .pay{
             }
         }
 
-.card-container {
-  display: inline-flex;
-    margin-bottom: 20px;
-}
 
 .card-1 {
   margin-right: 10px;

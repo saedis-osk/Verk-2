@@ -60,16 +60,20 @@
                         </div>
                     </div>
                         <!-- Product actions-->
+
+
+
+
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center btn btn-outline-dark mt-auto">
-                                <a class="pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}">View</a>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto pizza-select-button" data-pizza-name="{{ pizza.name }}" data-pizza-description="{{ pizza.description }}">View</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-        </div
+        </div>
 </section>
 <script src="{% static 'js/menu.js' %}"></script>
     {% include 'footer.html' %}
